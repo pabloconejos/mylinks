@@ -1,0 +1,37 @@
+<div class="page-container">
+    <div class="container right-panel-active" id="container">
+        <div class="form-container sign-up-container">
+            <form [formGroup]="registerForm">
+                <h1>Create Account</h1>
+                <div class="social-container">
+                    <img class="social" src="https://svgl.app/library/google.svg" alt="">
+                </div>
+                <span>or use your email for registration</span>
+                <input formControlName="username" type="text" placeholder="Username" [ngClass]="{'is-valid': registerFormSubmitted && lf['username'].errors == null,
+                'is-invalid': registerFormSubmitted && lf['username'].errors != null}" />
+  
+                <input formControlName="mail" type="email" placeholder="Email" [ngClass]="{'is-valid': registerFormSubmitted && lf['mail'].errors == null,
+                'is-invalid': registerFormSubmitted && lf['mail'].errors != null}" />
+
+                <input formControlName="password" type="password" placeholder="Password" [ngClass]="{'is-valid': registerFormSubmitted && lf['password'].errors == null,
+                'is-invalid': registerFormSubmitted && lf['password'].errors != null}" />
+                <button (click)="register()">
+                    @if (!loading) {
+                        Sign Up
+                    } @else {
+                        <app-loader></app-loader>
+                    }
+                </button>
+            </form>
+        </div>
+        <div class="overlay-container">
+            <div class="overlay">
+                <div class="overlay-panel overlay-left">
+                    <h1>Welcome Back!</h1>
+                    <p>To keep connected with us please login with your personal info</p>
+                    <button [routerLink]="'/auth/login'" class="ghost" id="signIn">Sign In</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
