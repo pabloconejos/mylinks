@@ -12,7 +12,13 @@
                 <input formControlName="password" type="password" placeholder="Password" [ngClass]="{'is-valid': loginFormSubmitted && lf['password'].errors == null,
                 'is-invalid': loginFormSubmitted && lf['password'].errors != null}" />
                 <a href="#">Forgot your password?</a>
-                <button (click)="login()">Sign In</button>
+                <button (click)="login()">
+                    @if (!loading) {
+                        Sign in
+                    } @else {
+                        <app-loader></app-loader>
+                    }
+                </button>
             </form>
         </div>
         <div class="overlay-container">
