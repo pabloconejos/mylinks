@@ -14,7 +14,7 @@ const routes: Routes = [
   },
   {
     path: 'create', 
-    component: InitPageComponent,
+    component: InitPageComponent
   }
 ]
 
