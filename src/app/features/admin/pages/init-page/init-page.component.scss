@@ -1,0 +1,68 @@
+.page-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+}
+
+.text-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 16px;
+}
+
+.main-title{
+    font-weight: bold; 
+    font-size: 6vw;
+    color: var(--primary-pink);
+}
+
+.sub-title {
+    font-weight: bold;
+    font-size: 2vw;
+    color: var(--primary-pink);
+}
+
+.svg-illustration {
+    display: none;
+}
+
+@media only screen and (max-width: 480px) {
+    .svg-illustration {
+        display: block;
+        margin: 20px;
+        width: 60vw;
+    }
+
+    .page-container {
+        gap: 32px;
+    }
+    
+}
+
+
+.main-title {
+    font-weight: 800;
+    color: darkblue;
+  }
+  
+@supports (--css: variables) {
+    .main-title {
+        background: linear-gradient(to right, #fbb8d7, #FF69B4);
+        color: transparent; 
+        background-clip: text; 
+    }
+        
+    .main-title::selection {
+        color: white;
+        background: #FF69B4;
+    }
+    .sub-title::selection {
+        color: white;
+        background: #FF69B4;
+    }
+}

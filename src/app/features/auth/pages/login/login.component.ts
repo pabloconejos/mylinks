@@ -62,4 +62,8 @@ export class LoginComponent {
     })
   }
 
+  goroute(ruta: string) {
+    this.router.navigate([ruta]);
+  }
+
 }

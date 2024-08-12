@@ -64,4 +64,15 @@ export class RegisterComponent {
     })
 
   }
+
+  goroute( ruta: string) {
+    try {
+      this.router.navigate([ruta]);
+    } catch (e) {
+      console.log(e)
+    }
+    
+  }
 }
+
+
