@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { PageService } from '../../../../core/services/page.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-init-page',
@@ -8,11 +9,20 @@ import { PageService } from '../../../../core/services/page.service';
 })
 export class InitPageComponent {
 
-  constructor(private pageService: PageService) { }
+  constructor(
+    private pageService: PageService,
+    private router: Router
+  ) { }
 
   createPage() {
     this.pageService.createPage().subscribe( r => {
-      console.log(r)
+      
+      if(r.pageId) {
+        console.log(r)
+        this.router.navigate(['admin/create/start'])
+      }
+    }, error => {
+      console.log(error)
     })
   }
 

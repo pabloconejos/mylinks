@@ -70,6 +70,12 @@ button.ghost {
     border-color: #FFFFFF;
 }
 
+button.ghost-reverse {
+    background-color: transparent;
+    color: var(--primary-pink);
+    border-color: var(--primary-pink);
+}
+
 button.disabled {
     border-radius: 20px;
     border: 1px solid #D3D3D3; 
@@ -83,4 +89,21 @@ button.disabled {
     cursor: not-allowed; 
     opacity: 0.6; 
     transition: none;
+}
+
+
+input {
+    background-color: #eee;
+    border: none;
+    padding: 12px 15px;
+    margin: 8px 0;
+    width: 100%;
+}
+
+textarea {
+    background-color: #eee;
+    border: none;
+    padding: 12px 15px;
+    margin: 8px 0;
+    width: 100%;
 }

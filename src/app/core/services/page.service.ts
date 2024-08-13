@@ -20,7 +20,7 @@ export class PageService {
   }
 
   createPage() {
-    return this.http.post<any>(this.URI + 'create', {}, { withCredentials: true });
+    return this.http.post<{pageId : string}>(this.URI + 'create', {}, { withCredentials: true });
   }
   
 }

@@ -1,0 +1,35 @@
+<div style="width: 100vw; height: 100vh; overflow: hidden; padding: 20px;">
+    <div class="absolute inset-0 -z-10 h-full w-full bg-white bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:14px_24px]"><div class="absolute left-0 right-0 top-0 -z-10 m-auto h-[310px] w-[310px] rounded-full bg-fuchsia-400 opacity-20 blur-[100px]"></div></div>
+    <div class="page-container">
+        
+        <div #containerOne class="container ">
+            <form class="form-container">
+                <div class="input-section">
+                    <label for="">Page Name:</label>
+                    <input formControlName="pageName" type="text" placeholder="Page Name">
+                </div>
+
+                <div class="input-section">
+                    <label for="">Page Description:</label>
+                    <!--<input type="area" placeholder="Page Description">-->
+                    <textarea formControlName="pageDescription" name="textarea" rows="10" cols="50">Write something here</textarea>
+                </div>
+                
+            </form>
+        </div>
+
+        <!-- TODO : EMOJI BG Y COLOR BG-->
+        <div #containerTwo class="container right-translate">
+            <h1>2</h1>
+        </div>
+
+        <section class="button-section">
+            <button #btnPrev class="ghost-reverse prev" (click)="prev()">Prev</button>
+            <div class="balls">
+                <div class="ball"></div>
+                <div class="ball"></div>
+            </div>
+            <button #btnNext class="next" (click)="next()">{{ nextText }}</button>
+        </section>
+    </div>
+</div>

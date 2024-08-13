@@ -5,6 +5,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from '../../core/guards/auth.guard';
 import { InitPageComponent } from './pages/init-page/init-page.component';
 import { HavePageGuard } from '../../core/guards/have-page.guard';
+import { PageStartConfigComponent } from './pages/page-start-config/page-start-config.component';
 
 const routes: Routes = [
   { 
@@ -15,13 +16,19 @@ const routes: Routes = [
   {
     path: 'create', 
     component: InitPageComponent
+  },
+  {
+    path: 'create/start', 
+    component: PageStartConfigComponent
   }
+
 ]
 
 @NgModule({
   declarations: [
     AdminComponent,
-    InitPageComponent
+    InitPageComponent,
+    PageStartConfigComponent
   ],
   imports: [
     CommonModule,
