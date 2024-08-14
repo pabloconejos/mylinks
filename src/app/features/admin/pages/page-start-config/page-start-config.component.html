@@ -2,25 +2,50 @@
     <div class="absolute inset-0 -z-10 h-full w-full bg-white bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:14px_24px]"><div class="absolute left-0 right-0 top-0 -z-10 m-auto h-[310px] w-[310px] rounded-full bg-fuchsia-400 opacity-20 blur-[100px]"></div></div>
     <div class="page-container">
         
+        <h1 class="main-title">Page Settings</h1>
+
         <div #containerOne class="container ">
-            <form class="form-container">
+            <form [formGroup]="settingForm" class="form-container">
                 <div class="input-section">
                     <label for="">Page Name:</label>
-                    <input formControlName="pageName" type="text" placeholder="Page Name">
+                    <input formControlName="pageName" type="text" value="New Page">
                 </div>
 
                 <div class="input-section">
                     <label for="">Page Description:</label>
-                    <!--<input type="area" placeholder="Page Description">-->
                     <textarea formControlName="pageDescription" name="textarea" rows="10" cols="50">Write something here</textarea>
                 </div>
                 
             </form>
         </div>
 
-        <!-- TODO : EMOJI BG Y COLOR BG-->
         <div #containerTwo class="container right-translate">
-            <h1>2</h1>
+
+            <form [formGroup]="settingForm" class="form-container">
+                <div class="color-picker">
+                    <label for="">Color:</label>
+                    <input formControlName="colorBg" class="colorPicker" type="color" value="#FFFFFF">
+                </div>
+
+                <div class="input-section">
+                    <label for="">Emoji background:</label>
+                    <div class="emoji-row">
+                        <app-emoji-picker (emoji)="handlerEmoji($event)" ></app-emoji-picker>
+                        <h1>{{ emojiSelect }}</h1>
+                    </div>
+                </div>
+
+
+                <label style="align-self: start;" for="">Or select one background:</label>
+                <div class="backgroundPicker">
+                        @for ( bg of backgrounds; track bg.id ) {
+                            <div [ngClass]="{'bg-section-active': bg.id == bgHtmlIdSelected}" class="bg-section relative">
+                                <div (click)="selectBg(bg.id)" [class]="bg.css_viewer_bg"></div>
+                            </div>
+                        }
+                </div>
+               
+            </form>
         </div>
 
         <section class="button-section">

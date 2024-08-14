@@ -1,14 +1,15 @@
 import { AfterViewInit, Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-import { AuthService } from '../../../../core/services/auth.service';
+import { FormGroup, FormBuilder } from '@angular/forms';
+import { BackgroundService } from '../../../../core/services/background.service';
+import { Background } from '../../../../interfaces/Backgrounds';
+import { PageService } from '../../../../core/services/page.service';
 
 @Component({
   selector: 'app-page-start-config',
   templateUrl: './page-start-config.component.html',
   styleUrl: './page-start-config.component.scss'
 })
-export class PageStartConfigComponent implements AfterViewInit{
+export class PageStartConfigComponent implements AfterViewInit, OnInit{
 
   @ViewChild('containerOne') containerOne!: ElementRef;
   @ViewChild('containerTwo') containerTwo!: ElementRef;
@@ -19,26 +20,36 @@ export class PageStartConfigComponent implements AfterViewInit{
   nextText = 'Next'
   activeContainer!: number;
 
+  emojiSelect: string = '';
+  backgrounds : Background[] = []
+
   settingForm: FormGroup;
   settingFormSubmitted = false;
   settingError: boolean = false;
   loading: boolean = false;
+  bgHtmlIdSelected: number = 0;
 
   constructor
   (
     private renderer: Renderer2, 
-    private authService: AuthService,
     private formBuilder: FormBuilder,
-    private router: Router
+    private bgService: BackgroundService,
+    private pageService: PageService
   ) 
   {
       this.settingForm = this.formBuilder.group({
-        pageName: ['', []],
+        pageName: ['New Page', []],
         pageDescription: ['', []],
         emojiBg: ['', []],
-        colorBg: ['', []]
+        colorBg: ['#ffffff', []],
+        cssBg: ['', []]
       });    
 
+  }
+  ngOnInit(): void {
+    this.bgService.getBackgrounds().subscribe( bg => {
+      this.backgrounds = bg.data
+    })
   }
 
   ngAfterViewInit(): void {
@@ -77,6 +88,7 @@ export class PageStartConfigComponent implements AfterViewInit{
         this.activeContainer = 2;
         break;
       case 2: // no hay next
+        this.sumbitForm()
         break;
     }
 
@@ -94,6 +106,27 @@ export class PageStartConfigComponent implements AfterViewInit{
         this.nextText = 'Finish'; 
         break;
     }
+  }
+
+
+  handlerEmoji(emoji: any) {
+    this.emojiSelect = emoji
+  }
+
+
+  selectBg(id: number) {
+    this.bgHtmlIdSelected = id;
+  }
+
+
+  sumbitForm() {
+    const { value } = this.settingForm
+    value.emojiBg = this.emojiSelect;
+    value.cssBg = this.bgHtmlIdSelected
+    console.log(value)
+    this.pageService.updatePage(value).subscribe( r => {
+      console.log(r)
+    })
   }
 
 }

@@ -54,7 +54,11 @@ form {
 
 
 .main-title{
-    font-weight: bold; 
+    font-weight: bold;
+    font-size: 5vw;
+    top: 100px; 
+    position: absolute;
+    z-index: 2;
     color: var(--primary-pink);
 }
 
@@ -80,4 +84,91 @@ form {
     transform: translateX(-100vw);
 }
 
+.color-picker {
+    position: relative;
+    display: inline-block;
+    display: flex;
+    justify-content: space-around;
+    align-items: start;
+    flex-direction: column ;
+    width: 100%
+  }
 
+
+
+
+input[type="color"] {
+  opacity: 1;
+  cursor: pointer;
+  padding: 2px;
+}
+
+.emoji-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    h1 {
+        margin-left: 16px;
+        font-size: 30px;
+    }
+}
+
+
+.backgroundPicker {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 16px;
+}
+
+.bg-section {
+    width: 100%;
+    height: 200px;
+    border: solid 1px silver;
+    border-radius: 10px;
+    cursor: pointer;
+
+    * {
+        border-radius: 10px;
+    }
+}
+
+.bg-section {
+    width: 100%;
+    height: 200px;
+    border: solid 1px silver;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 80ms ease-in;
+
+    * {
+        border-radius: 10px;
+    }
+}
+
+.bg-section-active {
+    position: relative;
+    outline: solid 4px var(--primary-pink);
+    border-radius: 8px; /* Redondea las esquinas del borde */
+    box-shadow: 0 0 8px rgba(255, 105, 180, 0.5); /* Agrega una sombra difusa en el color del borde */
+    transition: all 0.3s ease; /* Suaviza las transiciones */
+}
+
+
+@supports (--css: variables) {
+    .main-title {
+        background: linear-gradient(to right, #fbb8d7, #FF69B4);
+        color: transparent; 
+        background-clip: text; 
+    }
+        
+    .main-title::selection {
+        color: white;
+        background: #FF69B4;
+    }
+    .sub-title::selection {
+        color: white;
+        background: #FF69B4;
+    }
+}

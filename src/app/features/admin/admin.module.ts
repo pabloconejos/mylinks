@@ -1,11 +1,13 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AdminComponent } from './pages/admin/admin.component';
 import { RouterModule, Routes } from '@angular/router';
-import { AuthGuard } from '../../core/guards/auth.guard';
 import { InitPageComponent } from './pages/init-page/init-page.component';
 import { HavePageGuard } from '../../core/guards/have-page.guard';
 import { PageStartConfigComponent } from './pages/page-start-config/page-start-config.component';
+import { EmojiPickerComponent } from './components/emoji-picker/emoji-picker.component';
+import { PickerComponent } from '@ctrl/ngx-emoji-mart';
+import { ReactiveFormsModule } from '@angular/forms';
 
 const routes: Routes = [
   { 
@@ -28,11 +30,16 @@ const routes: Routes = [
   declarations: [
     AdminComponent,
     InitPageComponent,
-    PageStartConfigComponent
+    PageStartConfigComponent,
+    EmojiPickerComponent
   ],
   imports: [
     CommonModule,
+    PickerComponent,
+    ReactiveFormsModule,
     RouterModule.forChild(routes)
-  ]
+  ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]  // Añade esta línea
+
 })
 export class AdminModule { }

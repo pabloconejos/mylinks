@@ -22,5 +22,9 @@ export class PageService {
   createPage() {
     return this.http.post<{pageId : string}>(this.URI + 'create', {}, { withCredentials: true });
   }
+
+  updatePage(data: any) {
+    return this.http.post<{pageId : string}>(this.URI + 'update', {data}, { withCredentials: true });
+  }
   
 }

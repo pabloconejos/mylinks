@@ -1,0 +1,30 @@
+.btn {
+    margin-top: 10px;
+    border-radius: 20px;
+    border: 1px solid #FF1493;
+    background-color: #FF1493;
+    color: #FFFFFF;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 12px 45px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: transform 80ms ease-in;
+    cursor: pointer;
+}
+
+.btn:active {
+    transform: scale(0.95);
+}
+
+.btn:focus {
+    outline: none;
+}
+
+
+.emoji-mart { 
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    z-index: 2;
+}
