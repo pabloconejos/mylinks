@@ -1,4 +1,4 @@
-<div style="width: 100vw; height: 100vh; overflow: hidden; padding: 20px;">
+<div *ngIf="backgrounds.length > 0" style="width: 100vw; height: 100vh; overflow: hidden; padding: 20px;">
     <div class="absolute inset-0 -z-10 h-full w-full bg-white bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:14px_24px]"><div class="absolute left-0 right-0 top-0 -z-10 m-auto h-[310px] w-[310px] rounded-full bg-fuchsia-400 opacity-20 blur-[100px]"></div></div>
     <div class="page-container">
         
@@ -37,10 +37,12 @@
 
 
                 <label style="align-self: start;" for="">Or select one background:</label>
-                <div class="backgroundPicker">
+                <div *ngIf="backgrounds.length > 1" class="backgroundPicker">
                         @for ( bg of backgrounds; track bg.id ) {
                             <div [ngClass]="{'bg-section-active': bg.id == bgHtmlIdSelected}" class="bg-section relative">
-                                <div (click)="selectBg(bg.id)" [class]="bg.css_viewer_bg"></div>
+                                <div (click)="selectBg(bg.id)" [class]="bg.css_viewer_bg">
+                                    
+                                </div>
                             </div>
                         }
                 </div>
@@ -54,7 +56,14 @@
                 <div class="ball"></div>
                 <div class="ball"></div>
             </div>
-            <button #btnNext class="next" (click)="next()">{{ nextText }}</button>
+            <button #btnNext class="next" (click)="next()">
+                @if (loading) {
+                    <app-loader></app-loader>
+                } @else {
+                    {{ nextText }}
+                }
+                
+            </button>
         </section>
     </div>
 </div>

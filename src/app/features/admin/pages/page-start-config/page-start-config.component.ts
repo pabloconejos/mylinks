@@ -21,7 +21,28 @@ export class PageStartConfigComponent implements AfterViewInit, OnInit{
   activeContainer!: number;
 
   emojiSelect: string = '';
-  backgrounds : Background[] = []
+  backgrounds : Background[] = [
+    {
+        "id": 1,
+        "css_real_bg": "absolute inset-0 -z-10 h-full w-full bg-white bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px]",
+        "css_viewer_bg": "absolute inset-0 h-full w-full bg-white bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px]"
+    },
+    {
+        "id": 2,
+        "css_real_bg": "absolute inset-0 -z-10 h-full w-full bg-white [background:radial-gradient(125%_125%_at_50%_10%,#fff_40%,#63e_100%)]",
+        "css_viewer_bg": "absolute inset-0 h-full w-full bg-white [background:radial-gradient(125%_125%_at_50%_10%,#fff_40%,#63e_100%)]"
+    },
+    {
+        "id": 3,
+        "css_real_bg": "absolute inset-0 top-0 z-[-2] h-screen w-screen bg-[#000000] bg-[radial-gradient(#ffffff33_1px,#00091d_1px)] bg-[size:20px_20px]",
+        "css_viewer_bg": "absolute inset-0 top-0 h-full w-full bg-[#000000] bg-[radial-gradient(#ffffff33_1px,#00091d_1px)] bg-[size:20px_20px]"
+    },
+    {
+        "id": 4,
+        "css_real_bg": "absolute inset-0 top-0 z-[-2] h-screen w-screen rotate-180 transform bg-white bg-[radial-gradient(60%_120%_at_50%_50%,hsla(0,0%,100%,0)_0,rgba(252,205,238,.5)_100%)]",
+        "css_viewer_bg": "absolute inset-0 top-0 h-full w-full rotate-180 transform bg-white bg-[radial-gradient(60%_120%_at_50%_50%,hsla(0,0%,100%,0)_0,rgba(252,205,238,.5)_100%)]"
+    }
+]
 
   settingForm: FormGroup;
   settingFormSubmitted = false;
@@ -43,13 +64,17 @@ export class PageStartConfigComponent implements AfterViewInit, OnInit{
         emojiBg: ['', []],
         colorBg: ['#ffffff', []],
         cssBg: ['', []]
-      });    
+      });
+      
+      this.bgService.getBackgrounds().subscribe( bg => {
+        this.backgrounds = bg.data
+        //console.log(this.backgrounds)
+      })
 
   }
+
   ngOnInit(): void {
-    this.bgService.getBackgrounds().subscribe( bg => {
-      this.backgrounds = bg.data
-    })
+    
   }
 
   ngAfterViewInit(): void {
@@ -123,8 +148,9 @@ export class PageStartConfigComponent implements AfterViewInit, OnInit{
     const { value } = this.settingForm
     value.emojiBg = this.emojiSelect;
     value.cssBg = this.bgHtmlIdSelected
-    console.log(value)
+    this.loading = true
     this.pageService.updatePage(value).subscribe( r => {
+      this.loading = false
       console.log(r)
     })
   }

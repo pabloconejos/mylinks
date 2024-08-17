@@ -8,6 +8,7 @@ import { PageStartConfigComponent } from './pages/page-start-config/page-start-c
 import { EmojiPickerComponent } from './components/emoji-picker/emoji-picker.component';
 import { PickerComponent } from '@ctrl/ngx-emoji-mart';
 import { ReactiveFormsModule } from '@angular/forms';
+import { SharedModule } from '../../shared/shared.module';
 
 const routes: Routes = [
   { 
@@ -37,7 +38,8 @@ const routes: Routes = [
     CommonModule,
     PickerComponent,
     ReactiveFormsModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    SharedModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]  // Añade esta línea
 

@@ -24,7 +24,7 @@ export class PageService {
   }
 
   updatePage(data: any) {
-    return this.http.post<{pageId : string}>(this.URI + 'update', {data}, { withCredentials: true });
+    return this.http.patch<{pageId : string}>(this.URI + 'update', {data}, { withCredentials: true });
   }
   
 }
