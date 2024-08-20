@@ -1,27 +1,21 @@
-# Mylinks
+# Proyecto: MYLINKS - Frontend
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.0.6.
+Este proyecto es una aplicación web donde cada usuario puede crear y personalizar su propia página, añadiendo enlaces a sus redes sociales, sitios web personales o cualquier otro enlace que desee compartir. El frontend se encarga de la interfaz de usuario, proporcionando una experiencia atractiva y fácil de usar.
 
-## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Tecnologías utilizadas
 
-## Code scaffolding
+- **Angular**: Framework principal para la creación de la interfaz de usuario.
+- **Tailwind CSS**: Para el diseño y la estilización del frontend.
+- **HTTPClient**: Para la comunicación con el backend.
+- **Angular Router**: Manejo de rutas dentro de la aplicación.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Estado del proyecto
+Este proyecto está actualmente en desarrollo. Se están implementando nuevas características y corrigiendo errores.
 
-## Build
+## Notas
+Existen aplicaciones similares ya en el mercado, como Linktree, que ofrecen funcionalidades parecidas. Este proyecto es un ejercicio educativo y no tiene fines comerciales.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
-## Running unit tests
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
