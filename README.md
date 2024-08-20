@@ -1,3 +1,6 @@
+![screenshot](./assets/gitImage/gitImage.png)
+
+
 # Proyecto: MYLINKS - Frontend
 
 Este proyecto es una aplicación web donde cada usuario puede crear y personalizar su propia página, añadiendo enlaces a sus redes sociales, sitios web personales o cualquier otro enlace que desee compartir. El frontend se encarga de la interfaz de usuario, proporcionando una experiencia atractiva y fácil de usar.
