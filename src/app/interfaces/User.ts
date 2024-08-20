@@ -1,5 +1,5 @@
 import { Page } from './Page';
-import { userDataBase } from './User';
+
 export interface User {
     id: number;
     username: string;
