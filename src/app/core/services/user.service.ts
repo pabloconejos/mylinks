@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { User, userDataBase } from '../../interfaces/User';
 import { HttpClient } from '@angular/common/http';
-import { environment } from '../../../environments/environment.prod';
+import { environment } from '../../../environments/environment';
 import { Page } from '../../interfaces/Page';
 
 @Injectable({
@@ -21,8 +21,37 @@ export class UserService {
     return this.http.get<userDataBase>(this.URI+'auth/user', { withCredentials: true });
   }
 
-  // TODO
   setUser(user: userDataBase) {
-   // this.user = new User(user.user_id, user.username, user.mail, user.creation_date, new Page(user.page_id, user.user_id, user.title, user.description, user.background_emoji, user.background_color, user.background_html_id, user.bg_mode))
+    console.log(user)
+    try {
+      const {background_color, background_emoji, background_html_id, bg_mode, creation_date, description, likes, mail, page_id, title, user_id, username, css_real_bg, mainColor, secondaryColor} = user
+      const creationDate: Date = new Date(creation_date);
+      console.log(bg_mode)
+      this.user = new User(
+        user_id,
+        username,
+        mail,
+        creationDate,
+        new Page(
+          page_id,
+          user_id,
+          title,
+          description,
+          background_emoji,
+          background_color, 
+          background_html_id,
+          bg_mode,
+          likes,
+          css_real_bg,
+          mainColor,
+          secondaryColor
+        )
+      )
+      return true
+    } catch (e) {
+      return e
+    }
+    
+
   }
 }

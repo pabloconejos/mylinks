@@ -1,1 +1,43 @@
-<p>admin works!</p>
+<div style="opacity: 0; display: none; position: absolute; z-index: -1;" [class]="'absolute inset-0 -z-10 h-screen w-screen bg-white bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px]'"></div>
+<div style="opacity: 0; display: none; position: absolute; z-index: -1;" [class]="'absolute inset-0 -z-10 h-screen w-screen bg-white [background:radial-gradient(125%_125%_at_50%_10%,#fff_40%,#63e_100%)]'"></div>
+<div style="opacity: 0; display: none; position: absolute; z-index: -1;" [class]="'absolute inset-0 top-0 z-[-2] h-screen w-screen bg-[#000000] bg-[radial-gradient(#ffffff33_1px,#00091d_1px)] bg-[size:20px_20px]'"></div>
+<div style="opacity: 0; display: none; position: absolute; z-index: -1;" [class]="'absolute inset-0 top-0 z-[-2] h-screen w-screen rotate-180 transform bg-white bg-[radial-gradient(60%_120%_at_50%_50%,hsla(0,0%,100%,0)_0,rgba(252,205,238,.5)_100%)]'"></div>
+
+@if (page) {
+    @switch (page.bg_mode) {
+        @case (1) {
+            <div [class]="page.css_real_bg"></div>
+        }
+        @case (2) {
+            <div [class]="page.css_real_bg"></div>
+        }
+    }
+
+    <!--<div class="page w-screen">
+        <div [style.background-color]="page.secondaryColor" class="header">
+            <div class="profile-picture">
+                <img class="rounded-full w-20 h-20" src="assets/icons/user.svg" alt="">
+            </div>
+            <div class="text">
+                <h1 [style.color]="page.mainColor" class="main-title">{{page.title}}</h1>
+                <h1 [style.color]="page.mainColor" class="sub-title">{{page.description}}</h1>
+            </div>
+            <div class="settings">
+                <img class="rounded-full w-20 h-20" src="assets/icons/settings.svg" alt="">
+            </div>
+
+        </div>
+    </div>-->
+
+    <div class="links-section">
+        
+
+
+        <div (click)="openDialog()" class="link generate-link">
+            <span class="link-icon">➕</span>
+            <span class="link-text font-semibold">Click here to create a new link</span>
+        </div>
+    </div>
+    
+    
+}

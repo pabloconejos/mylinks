@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 import { BackgroundService } from '../../../../core/services/background.service';
 import { Background } from '../../../../interfaces/Backgrounds';
 import { PageService } from '../../../../core/services/page.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-page-start-config',
@@ -19,18 +20,19 @@ export class PageStartConfigComponent implements AfterViewInit, OnInit{
 
   nextText = 'Next'
   activeContainer!: number;
+  error!: boolean;
 
   emojiSelect: string = '';
   backgrounds : Background[] = [
     {
         "id": 1,
-        "css_real_bg": "absolute inset-0 -z-10 h-full w-full bg-white bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px]",
-        "css_viewer_bg": "absolute inset-0 h-full w-full bg-white bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px]"
+        "css_real_bg": "absolute inset-0 -z-10 h-screen w-screen bg-white bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px]",
+        "css_viewer_bg": "absolute inset-0 top-0 h-full w-full bg-white bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px]"
     },
     {
         "id": 2,
-        "css_real_bg": "absolute inset-0 -z-10 h-full w-full bg-white [background:radial-gradient(125%_125%_at_50%_10%,#fff_40%,#63e_100%)]",
-        "css_viewer_bg": "absolute inset-0 h-full w-full bg-white [background:radial-gradient(125%_125%_at_50%_10%,#fff_40%,#63e_100%)]"
+        "css_real_bg": "absolute inset-0 -z-10 h-screen w-screen bg-white [background:radial-gradient(125%_125%_at_50%_10%,#fff_40%,#63e_100%)]",
+        "css_viewer_bg": "absolute inset-0 top-0 h-full w-full bg-white [background:radial-gradient(125%_125%_at_50%_10%,#fff_40%,#63e_100%)]"
     },
     {
         "id": 3,
@@ -55,7 +57,8 @@ export class PageStartConfigComponent implements AfterViewInit, OnInit{
     private renderer: Renderer2, 
     private formBuilder: FormBuilder,
     private bgService: BackgroundService,
-    private pageService: PageService
+    private pageService: PageService,
+    private router: Router
   ) 
   {
       this.settingForm = this.formBuilder.group({
@@ -66,10 +69,10 @@ export class PageStartConfigComponent implements AfterViewInit, OnInit{
         cssBg: ['', []]
       });
       
-      this.bgService.getBackgrounds().subscribe( bg => {
+      /*this.bgService.getBackgrounds().subscribe( bg => {
         this.backgrounds = bg.data
         //console.log(this.backgrounds)
-      })
+      })*/
 
   }
 
@@ -151,7 +154,14 @@ export class PageStartConfigComponent implements AfterViewInit, OnInit{
     this.loading = true
     this.pageService.updatePage(value).subscribe( r => {
       this.loading = false
-      console.log(r)
+      this.error = false
+      this.router.navigate(['/admin'])
+    }, error => {
+      this.error = true
+      this.loading = false
+      setTimeout(() => {
+        this.error = false
+      }, 10000)
     })
   }
 

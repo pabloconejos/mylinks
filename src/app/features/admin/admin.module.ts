@@ -9,6 +9,8 @@ import { EmojiPickerComponent } from './components/emoji-picker/emoji-picker.com
 import { PickerComponent } from '@ctrl/ngx-emoji-mart';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../../shared/shared.module';
+import { AddLinkModalComponent } from './components/add-link-modal/add-link-modal.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 const routes: Routes = [
   { 
@@ -32,14 +34,16 @@ const routes: Routes = [
     AdminComponent,
     InitPageComponent,
     PageStartConfigComponent,
-    EmojiPickerComponent
+    EmojiPickerComponent,
+    AddLinkModalComponent
   ],
   imports: [
     CommonModule,
     PickerComponent,
     ReactiveFormsModule,
     RouterModule.forChild(routes),
-    SharedModule
+    SharedModule,
+    MatDialogModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]  // Añade esta línea
 

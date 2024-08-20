@@ -1,7 +1,7 @@
 import { Page } from './Page';
 
 export interface User {
-    id: number;
+    id: string;
     username: string;
     mail: string;
     creation_date: Date;
@@ -21,20 +21,28 @@ export interface RegisterDTO {
 
 
 export class User implements User {
-    id: number;
+    id: string;
     username: string;
     mail: string;
     creation_date: Date;
     page: Page
 
-    constructor(id: number, username: string, mail: string, creation_date: Date, page: Page) {
+    constructor(id: string, username: string, mail: string, creation_date: Date, page: Page) {
         this.id = id;
         this.username = username;
         this.mail = mail;
         this.creation_date = creation_date;
         this.page = page
     }
+
+    
 }
+
+export interface checkAuth {
+    authenticated: boolean, 
+    message: string
+}
+
 
 export interface userDataBase {
     user_id: string
@@ -49,13 +57,9 @@ export interface userDataBase {
     background_color: string
     background_html_id: number
     bg_mode: number
-  }
-  
-  
-
-export interface checkAuth {
-    authenticated: boolean, 
-    message: string
+    css_real_bg: string
+    mainColor: string
+    secondaryColor: string
 }
 
   
