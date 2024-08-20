@@ -1,4 +1,4 @@
-![screenshot](./assets/gitImage/gitImage.png)
+![screenshot](./src/assets/gitImage/gitImage.png)
 
 
 # Proyecto: MYLINKS - Frontend
