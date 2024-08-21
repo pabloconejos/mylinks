@@ -33,7 +33,7 @@
 
 
 <mat-dialog-content class="custom-dialog-container">
-  <form [formGroup]="linkForm" (ngSubmit)="onSubmit()">
+  <form [formGroup]="linkForm">
     <mat-form-field>
       <mat-error *ngIf="linkForm.get('title')!.hasError('required') && linkFormSubmited">
         Name is required.
@@ -67,6 +67,10 @@
       </div>
     </mat-form-field>
 
-    <button mat-raised-button type="submit">Submit</button>
+    <div class="buttons">
+      <button class="ghost text-black p-0 cursor-pointer" mat-button (click)="onNoClick()">Close</button>
+      <button mat-raised-button (click)="onSubmit()">Submit</button>
+    </div>
+    
   </form>
 </mat-dialog-content>

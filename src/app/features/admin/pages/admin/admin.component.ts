@@ -53,29 +53,17 @@ export class AdminComponent implements OnInit{
     });
     
 
-    this.dialogRef.afterClosed().subscribe((link: LinkForm) => {
-      console.log(link)
-      this.linksService.setLink(link).subscribe( r => {
-        console.log(r)
-      })
+    this.dialogRef.afterClosed().subscribe((link: {data: LinkForm, error: boolean}) => {
+      const {data, error} = link
+      if (!error) {
+        this.linksService.setLink(data).subscribe( r => {
+          console.log(r)
+        })
+      }
     });
   }
 
-  createBackgroundEmoji() {
-    
-  }
+  
 
-  createBackgroundCss() {
-    
-
-  }
-
-  craeteLinks() {
-
-  }
-
-  createTitle() {
-
-  }
 
 }

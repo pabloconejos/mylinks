@@ -3,6 +3,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { LinkImage } from '../../../../interfaces/LinksImages';
 import { LinkForm } from '../../../../interfaces/Link';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { errorContext } from 'rxjs/internal/util/errorContext';
 
 
 @Component({
@@ -35,7 +36,7 @@ export class AddLinkModalComponent implements OnInit {
   }
 
   onNoClick(): void {
-    this.dialogRef.close();
+    this.dialogRef.close({data: '', error: true});
   }
 
   validateUrl(url: string): boolean {
@@ -51,10 +52,9 @@ export class AddLinkModalComponent implements OnInit {
     if (this.validateUrl(url)) {
       this.invalidUrl = false
       this.linkForm.value.image_id = this.imageIdSelect
-      this.dialogRef.close(this.linkForm.value);
+      this.dialogRef.close({data:this.linkForm.value, error: false});
     } else {
       this.invalidUrl = true
-      console.error('Invalid URL');
     }
   }
 
