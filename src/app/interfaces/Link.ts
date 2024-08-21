@@ -36,3 +36,10 @@ export class Link implements Link {
     }
 }
 
+export interface LinkForm {
+    url: string;
+    title: string;
+    description: string;
+    image_id: number;
+  }
+

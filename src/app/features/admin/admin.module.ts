@@ -7,10 +7,10 @@ import { HavePageGuard } from '../../core/guards/have-page.guard';
 import { PageStartConfigComponent } from './pages/page-start-config/page-start-config.component';
 import { EmojiPickerComponent } from './components/emoji-picker/emoji-picker.component';
 import { PickerComponent } from '@ctrl/ngx-emoji-mart';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../../shared/shared.module';
 import { AddLinkModalComponent } from './components/add-link-modal/add-link-modal.component';
-import { MatDialogModule } from '@angular/material/dialog';
+import { MAT_DIALOG_DEFAULT_OPTIONS, MatDialogModule } from '@angular/material/dialog';
 
 const routes: Routes = [
   { 
@@ -43,9 +43,11 @@ const routes: Routes = [
     ReactiveFormsModule,
     RouterModule.forChild(routes),
     SharedModule,
-    MatDialogModule
+    MatDialogModule,
+    FormsModule
   ],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA]  // Añade esta línea
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  providers: [{provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: true}}]
 
 })
 export class AdminModule { }

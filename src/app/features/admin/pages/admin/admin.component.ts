@@ -4,6 +4,9 @@ import { Page } from '../../../../interfaces/Page';
 import { PageService } from '../../../../core/services/page.service';
 import { MatDialog } from '@angular/material/dialog';
 import { AddLinkModalComponent } from '../../components/add-link-modal/add-link-modal.component';
+import { LinksService } from '../../../../core/services/links.service';
+import { LinkImage } from '../../../../interfaces/LinksImages';
+import { LinkForm } from '../../../../interfaces/Link';
 
 @Component({
   selector: 'app-admin',
@@ -14,11 +17,14 @@ export class AdminComponent implements OnInit{
 
   page!: Page;
   private dialogRef: any;
+  linksImages: LinkImage[]= [];
 
   constructor(
     public userService: UserService,
     public pageService: PageService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    public linksService: LinksService
+
   ) {
     this.userService.getUser().subscribe( user => {
       this.userService.setUser(user)
@@ -27,6 +33,10 @@ export class AdminComponent implements OnInit{
   }
   
   ngOnInit(): void {
+
+    this.linksService.getLinksImages().subscribe( imgs => {
+      this.linksImages = imgs
+    })
     
   }
 
@@ -35,33 +45,19 @@ export class AdminComponent implements OnInit{
     this.page = this.pageService.page
   }
 
-  handlerBgMode() {
-
-    switch (this.page.bg_mode) {
-      case 1:
-        this.createBackgroundEmoji()
-        break;
-      case 2:
-        this.createBackgroundCss()
-        break;
-      default:
-        this.createBackgroundCss()
-        break;
-    }
-  }
-
   openDialog(): void {
     this.dialogRef = this.dialog.open(AddLinkModalComponent, {
-      width: '400px', // Puedes ajustar el ancho
-      height: '300px', // Puedes ajustar la altura (opcional)
-      data: { name: 'some data' },
-      disableClose: true // Opcional
+      width: '600px', // Puedes ajustar el ancho
+      disableClose: true, // Opcional
+      data: this.linksImages
     });
     
 
-    this.dialogRef.afterClosed().subscribe((result: any) => {
-      console.log('The dialog was closed');
-     
+    this.dialogRef.afterClosed().subscribe((link: LinkForm) => {
+      console.log(link)
+      this.linksService.setLink(link).subscribe( r => {
+        console.log(r)
+      })
     });
   }
 
