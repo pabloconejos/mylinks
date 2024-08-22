@@ -69,10 +69,10 @@ export class PageStartConfigComponent implements AfterViewInit, OnInit{
         cssBg: ['', []]
       });
       
-      /*this.bgService.getBackgrounds().subscribe( bg => {
+      this.bgService.getBackgrounds().subscribe( bg => {
         this.backgrounds = bg.data
         //console.log(this.backgrounds)
-      })*/
+      })
 
   }
 

@@ -1,53 +1,65 @@
-.links-section {
+:host {
+    width: 600px;
+    height: 120px;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+    transition: scale 0.5s ease-in-out;
+    box-shadow: 0 14px 28px rgba(147, 138, 138, 0.25), 
+            0 10px 10px rgba(0,0,0,0.22);
+    scale: 1;
+
+    @starting-style {
+        scale: 0
+    }
+    background-color: #ffff
+}
+
+.link {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 16px;
+    cursor: pointer;
+}
+
+.image-section img {
+    max-width: 100px;
+}
+
+.main-section {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    margin: 20px;
-}
 
-.link {
-    width: 600px;
-    height: 120px;
-    border-radius: 20px;
-    transition: all 0.3s ease;
-    background: #ffffff
-}
+    h1{
+        font-size: 17px;
+        font-weight: bold;
+    }
 
-.generate-link {
-    border: dashed silver 2px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: all 0.3s ease;
-}
-
-.generate-link:hover {
-    cursor: pointer;
-    background-color: silver;
-    border: solid silver 2px;
-    .link-text {
-        color: white
+    h3 {
+        font-size: 14px;
+        font-weight: bold;
     }
 }
 
-.link-icon {
-    font-size: 24px;
-    margin-right: 10px;
-    color: silver;
+.tools-section{
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+    gap: 16px;
 }
 
-.link-text {
-    font-size: 18px;
-    color: silver;
-    font-family: Arial, sans-serif;
-    transition: color 0.3s ease;
-
-}
 
 /* Pantallas grandes (Desktop) */
 @media (min-width: 1200px) {
-    .link {
+    :host {
         width: 600px;
         height: 120px;
     }
@@ -55,7 +67,7 @@
 
 /* Pantallas medianas (Laptops, Tablets grandes) */
 @media (min-width: 992px) and (max-width: 1199px) {
-    .link {
+    :host {
         width: 500px;
         height: 120px;
     }
@@ -63,32 +75,36 @@
 
 /* Pantallas pequeñas (Tablets, Phablets) */
 @media (min-width: 768px) and (max-width: 991px) {
-    .link {
+    :host {
         width: 100%;
         height: 120px;
+        margin: 20px;
     }
 }
 
 /* Pantallas muy pequeñas (Teléfonos móviles en orientación vertical) */
 @media (min-width: 576px) and (max-width: 767px) {
-    .link {
+    :host {
         width: 100%;
         height: 120px;
+        margin: 20px;
     }
 }
 
 /* Pantallas extra pequeñas (Móviles pequeños) */
 @media (max-width: 575px) {
-    .link {
+    :host {
         width: 100%;
         height: 120px;
+        margin: 20px;
     }
 }
 
 /* Pantallas extremadamente pequeñas (Dispositivos antiguos o smartwatches) */
 @media (max-width: 360px) {
-    .link {
+    :host {
         width: 100%;
         height: 120px;
+        margin: 20px;
     }
 }

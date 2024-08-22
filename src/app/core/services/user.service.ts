@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { User, userDataBase } from '../../interfaces/User';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
-import { Page } from '../../interfaces/Page';
+import { Page } from '../../interfaces/index';
 
 @Injectable({
   providedIn: 'root'

@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { environment } from '../../../environments/environment';
-import { checkAuth, LoginDTO, RegisterDTO } from '../../interfaces/User';
+import { checkAuth, LoginDTO, RegisterDTO } from '../../interfaces/index'
 import { CookieService } from 'ngx-cookie-service';
 
 

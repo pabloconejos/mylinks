@@ -1,38 +1,48 @@
 export interface Link {
-    id: number;
-    user_id: string;
-    page_id: string;
-    url: string;
-    title: string;
-    description: string;
-    image: string;
+    id: string
+    userId: string
+    pageId: string
+    linkUrl: string
+    title: string
+    description: string
+    creationDate: string
+    imageId: number
+    imageName: string
+    imageUrl: string
 }
 
 export class Link implements Link {
-    id: number;
-    user_id: string;
-    page_id: string;
-    url: string;
+    id: string;
+    userId: string;
+    pageId: string;
+    linkUrl: string;
     title: string;
     description: string;
-    image: string;
+    imageId: number
+    imageName: string
+    imageUrl: string
 
     constructor(
-        id: number, 
-        user_id: string, 
-        page_id: string, 
-        url: string, 
-        title: string, 
-        description: string, 
-        image: string
+        id: string,
+        userId: string,
+        pageId: string,
+        linkUrl: string,
+        title: string,
+        description: string,
+        image: string,
+        imageId: number,
+        imageName: string,
+        imageUrl: string
     ) {
         this.id = id;
-        this.user_id = user_id;
-        this.page_id = page_id;
-        this.url = url;
+        this.userId = userId;
+        this.pageId = pageId;
+        this.linkUrl = linkUrl;
         this.title = title;
         this.description = description;
-        this.image = image;
+        this.imageId = imageId,
+        this.imageName = imageName,
+        this.imageUrl = imageUrl
     }
 }
 
@@ -43,3 +53,8 @@ export interface LinkForm {
     image_id: number;
   }
 
+
+ export interface LinkResult {
+    link: LinkForm, 
+    action: string
+}

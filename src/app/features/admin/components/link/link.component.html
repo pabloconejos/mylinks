@@ -1,0 +1,18 @@
+<div class="link">
+    <div class="image-section">
+        <img [src]="link.imageUrl" alt="">
+    </div>
+    <div class="main-section">
+        <p>{{link.title}}</p>
+        <p>{{link.description}}</p>
+    </div>
+    <div class="tools-section">
+        <img (click)="openDialog()" src="assets/svg/pencil.svg" alt="">
+        <a [href]="link.linkUrl" target="_blank">
+            <img src="assets/svg/share.svg" alt="Go to the link page">
+        </a>
+    </div>
+
+</div>
+
+

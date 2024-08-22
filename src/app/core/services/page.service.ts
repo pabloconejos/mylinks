@@ -2,8 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { environment } from '../../../environments/environment';
-import { Page } from '../../interfaces/Page';
-import { User } from '../../interfaces/User';
+import { Page, User } from '../../interfaces/index';
+
 
 @Injectable({
   providedIn: 'root'

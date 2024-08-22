@@ -1,12 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from '../../../../core/services/user.service';
-import { Page } from '../../../../interfaces/Page';
-import { PageService } from '../../../../core/services/page.service';
-import { MatDialog } from '@angular/material/dialog';
-import { AddLinkModalComponent } from '../../components/add-link-modal/add-link-modal.component';
-import { LinksService } from '../../../../core/services/links.service';
-import { LinkImage } from '../../../../interfaces/LinksImages';
-import { LinkForm } from '../../../../interfaces/Link';
+import { UserService } from '@/app/core/services/user.service';
+import { PageService } from '@/app/core/services/page.service';
+import { MatDialog } from '@angular/material/dialog'; 
+import { AddLinkModalComponent } from '@/app/features/admin/components/add-link-modal/add-link-modal.component';
+import { LinksService } from '@/app/core/services/links.service';
+import { Link, LinkForm, LinkImage, LinkResult, Page } from '@/app/interfaces/index';
+
 
 @Component({
   selector: 'app-admin',
@@ -18,6 +17,7 @@ export class AdminComponent implements OnInit{
   page!: Page;
   private dialogRef: any;
   linksImages: LinkImage[]= [];
+  links: Link[] = []
 
   constructor(
     public userService: UserService,
@@ -28,7 +28,8 @@ export class AdminComponent implements OnInit{
   ) {
     this.userService.getUser().subscribe( user => {
       this.userService.setUser(user)
-      this.inicializarVariables()  
+      this.inicializarVariables()
+      this.getLinks()  
     })
   }
   
@@ -40,6 +41,25 @@ export class AdminComponent implements OnInit{
     
   }
 
+  handlerLinkEvent(ev: LinkResult) {
+    const { link, action} = ev
+    switch(action) {
+      case 'edit':
+        this.editLink(link)
+        break;
+      case 'delete':
+        this.deleteLink(link)
+        break;
+    }
+  }
+
+  getLinks() {
+    this.linksService.getLinks().subscribe( (l: Link[]) => {
+      console.log(l)
+      this.links = l
+    })
+  }
+
   inicializarVariables() {
     this.pageService.setPage(this.userService.user)
     this.page = this.pageService.page
@@ -49,21 +69,30 @@ export class AdminComponent implements OnInit{
     this.dialogRef = this.dialog.open(AddLinkModalComponent, {
       width: '600px', // Puedes ajustar el ancho
       disableClose: true, // Opcional
-      data: this.linksImages
+      data: {link: null, linksImages: this.linksImages}
     });
     
 
-    this.dialogRef.afterClosed().subscribe((link: {data: LinkForm, error: boolean}) => {
-      const {data, error} = link
-      if (!error) {
-        this.linksService.setLink(data).subscribe( r => {
-          console.log(r)
-        })
+    this.dialogRef.afterClosed().subscribe((linkRes: {link: LinkForm, action: string}) => {
+      const {link, action} = linkRes
+      if (action == 'add') {
+        this.addLink(link)
       }
     });
   }
 
-  
+  addLink(link: LinkForm) {
+    this.linksService.setLink(link).subscribe(r => {
+      console.log(r);
+      this.getLinks();
+    });
+  }
 
+  editLink(link: LinkForm) {
 
+  }
+
+  deleteLink(link: LinkForm) {
+    
+  }
 }

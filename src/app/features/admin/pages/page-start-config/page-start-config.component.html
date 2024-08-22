@@ -2,6 +2,9 @@
 <div style="opacity: 0; position: absolute; z-index: -1;" [class]="'absolute inset-0 -z-10 h-screen w-screen bg-white [background:radial-gradient(125%_125%_at_50%_10%,#fff_40%,#63e_100%)]'"></div>
 <div style="opacity: 0; position: absolute; z-index: -1;" [class]="'absolute inset-0 top-0 z-[-2] h-screen w-screen bg-[#000000] bg-[radial-gradient(#ffffff33_1px,#00091d_1px)] bg-[size:20px_20px]'"></div>
 <div style="opacity: 0; position: absolute; z-index: -1;" [class]="'absolute inset-0 top-0 z-[-2] h-screen w-screen rotate-180 transform bg-white bg-[radial-gradient(60%_120%_at_50%_50%,hsla(0,0%,100%,0)_0,rgba(252,205,238,.5)_100%)]'"></div>
+<div style="opacity: 0; position: absolute; z-index: -1;" class="absolute inset-0 -z-10 h-full w-full items-center px-5 py-24 [background:radial-gradient(125%_125%_at_50%_10%,#000_40%,#63e_100%)]"></div>
+<div style="opacity: 0; position: absolute; z-index: -1;" class="absolute top-0 z-[-2] h-screen w-screen rotate-180 transform bg-white bg-[radial-gradient(60%_120%_at_50%_50%,hsla(0,0%,100%,0)_0,rgba(135,206,235,.5)_100%)]"></div>
+<div style="opacity: 0; position: absolute; z-index: -1;" class="absolute h-full w-full bg-white [background:radial-gradient(125%_125%_at_50%_10%,#fff_40%,#FF69B4_100%)]"></div>
 
 <div *ngIf="backgrounds.length > 0" style="width: 100vw; height: 100vh; overflow: hidden; padding: 20px;">
     
@@ -13,9 +16,9 @@
 
     <div class="page-container">
         
-        <h1 class="main-title">Page Settings</h1>
 
-        <div #containerOne class="container ">
+        <div #containerOne class="container relative">
+            <h1 class="main-title absolute">Page Name</h1>
             <form [formGroup]="settingForm" class="form-container">
                 <div class="input-section">
                     <label for="">Page Name:</label>
@@ -30,58 +33,15 @@
             </form>
         </div>
 
-        <div #containerTwo class="container right-translate">
-
-            <form [formGroup]="settingForm" class="form-container">
-                <div class="color-picker">
-                    <label for="">Color:</label>
-                    <input formControlName="colorBg" class="colorPicker" type="color" value="#FFFFFF">
-                </div>
-
-                <div class="input-section">
-                    <label for="">Emoji background:</label>
-                    <div class="emoji-row">
-                        <app-emoji-picker (emoji)="handlerEmoji($event)" ></app-emoji-picker>
-                        <h1>{{ emojiSelect }}</h1>
+        <div #containerTwo class="container right-translate container-bg relative">
+            <h1 class="main-title absolute">Page Background</h1>
+            @for ( bg of backgrounds; track bg.id ) {
+                <div [ngClass]="{'bg-section-active': bg.id == bgHtmlIdSelected}" class="bg-section relative">
+                    <div (click)="selectBg(bg.id)" [class]="bg.css_viewer_bg">
+                        
                     </div>
                 </div>
-
-
-                <label style="align-self: start;" for="">Or select one background:</label>
-                <div *ngIf="backgrounds.length > 1" class="backgroundPicker">
-                        @for ( bg of backgrounds; track bg.id ) {
-                            <div [ngClass]="{'bg-section-active': bg.id == bgHtmlIdSelected}" class="bg-section relative">
-                                <div (click)="selectBg(bg.id)" [class]="bg.css_viewer_bg">
-                                    
-                                </div>
-                            </div>
-                        }
-                        <!--<div [ngClass]="{'bg-section-active': backgrounds[0].id == bgHtmlIdSelected}" class="bg-section relative">
-                            <div (click)="selectBg(backgrounds[0].id)" [class]="'absolute inset-0 top-0 h-full w-full bg-white bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px]'">
-                                
-                            </div>
-                        </div>
-
-                        <div [ngClass]="{'bg-section-active': backgrounds[1].id == bgHtmlIdSelected}" class="bg-section relative">
-                            <div (click)="selectBg(backgrounds[1].id)" [class]="'absolute inset-0 top-0 h-full w-full bg-white [background:radial-gradient(125%_125%_at_50%_10%,#fff_40%,#63e_100%)]'">
-                                
-                            </div>
-                        </div>
-
-                        <div [ngClass]="{'bg-section-active': backgrounds[2].id == bgHtmlIdSelected}" class="bg-section relative">
-                            <div (click)="selectBg(backgrounds[2].id)" [class]="'absolute inset-0 top-0 h-full w-full bg-[#000000] bg-[radial-gradient(#ffffff33_1px,#00091d_1px)] bg-[size:20px_20px]'">
-                                
-                            </div>
-                        </div>
-
-                        <div [ngClass]="{'bg-section-active': backgrounds[3].id == bgHtmlIdSelected}" class="bg-section relative">
-                            <div (click)="selectBg(backgrounds[3].id)" [class]="'absolute inset-0 top-0 h-full w-full rotate-180 transform bg-white bg-[radial-gradient(60%_120%_at_50%_50%,hsla(0,0%,100%,0)_0,rgba(252,205,238,.5)_100%)]'">
-                                
-                            </div>
-                        </div>-->
-                </div>
-               
-            </form>
+            }
         </div>
 
         <section class="button-section">
@@ -101,3 +61,6 @@
         </section>
     </div>
 </div>
+
+
+

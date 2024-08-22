@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { environment } from '../../../environments/environment';
-import { RootBackgrounds } from '../../interfaces/Backgrounds';
+import { RootBackgrounds } from '../../interfaces/index';
 
 @Injectable({
   providedIn: 'root'

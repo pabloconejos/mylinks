@@ -46,11 +46,11 @@
 
 
 .main-title {
-    font-weight: 800;
-    color: darkblue;
+    font-weight: bold;
+    color: #FF69B4;
   }
   
-@supports (--css: variables) {
+/*@supports (--css: variables) {
     .main-title {
         background: linear-gradient(to right, #fbb8d7, #FF69B4);
         color: transparent; 
@@ -65,4 +65,4 @@
         color: white;
         background: #FF69B4;
     }
-}
+}*/
