@@ -8,21 +8,27 @@
 
 
 @if (page) {
-    @switch (page.bg_mode) {
-        @case (1) {
-            <div [class]="page.css_real_bg"></div>
-        }
-        @case (2) {
-            <div [class]="page.css_real_bg"></div>
-        }
-    }
-
+    <div class="fixed left-0 -z-10 top-0 h-full w-full"> <!--  -->
+        <div class="relative h-full w-full">
+            @switch (page.bg_mode) {
+                @case (1) {
+                    <div [class]="page.css_real_bg"></div>
+                }
+                @case (2) {
+                    <div [class]="page.css_real_bg"></div>
+                }
+            }        
+        </div>
+    </div>
+    
+    
 
 
     <div class="links-section">
         @for (link of links; track link.id) {
             <app-link (linkEvent)="handlerLinkEvent($event)" [link]="link" [linksImages]="linksImages"></app-link>
         }
+        
         <div (click)="openDialog()" class="link generate-link">
             <span class="link-icon">➕</span>
             <span class="link-text font-semibold">Click here to create a new link</span>
