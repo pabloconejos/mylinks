@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
-import { LinkImage, Link, LinkForm } from '../../interfaces/index'
+import { LinkImage, Link } from '../../interfaces/index'
 
 @Injectable({
   providedIn: 'root'
@@ -17,8 +17,8 @@ export class LinksService {
     return this.http.get<LinkImage[]>(this.URI+'links/linksImages')
   }
 
-  setLink(data: LinkForm) {
-    return this.http.post<any>(this.URI+'links/link', {data}, { withCredentials: true })
+  setLink(link: Link) {
+    return this.http.post<any>(this.URI+'links/link', {link}, { withCredentials: true })
   }
 
   getLinks() {

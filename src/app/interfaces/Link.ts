@@ -11,6 +11,7 @@ export interface Link {
     imageUrl: string
 }
 
+
 export class Link implements Link {
     id: string;
     userId: string;
@@ -46,15 +47,15 @@ export class Link implements Link {
     }
 }
 
-export interface LinkForm {
+/*export interface LinkForm {
     url: string;
     title: string;
     description: string;
     image_id: number;
-  }
+  }*/
 
 
  export interface LinkResult {
-    link: LinkForm, 
+    link: Link, 
     action: string
 }

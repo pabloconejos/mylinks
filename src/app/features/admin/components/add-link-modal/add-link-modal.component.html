@@ -1,27 +1,27 @@
 <mat-dialog-content class="custom-dialog-container">
   <form [formGroup]="linkForm">
     <mat-form-field>
-      <mat-error  *ngIf="linkForm.get('title')!.hasError('required') && linkFormSubmited">
+      <mat-error *ngIf="linkForm.get('title')!.hasError('required') && linkFormSubmited">
         Name is required.
       </mat-error>
       <mat-label>Name: </mat-label>
-      <input [(ngModel)]="link.title" matInput formControlName="title" placeholder="Enter the link's name" />
+      <input matInput formControlName="title" placeholder="Enter the link's name" />
     </mat-form-field>
 
     <mat-form-field>
       <mat-label>Description: </mat-label>
-      <input [(ngModel)]="link.description" matInput formControlName="description" placeholder="Write the description" />
+      <input matInput formControlName="description" placeholder="Write the description" />
     </mat-form-field>
 
     <mat-form-field>
-      <mat-error *ngIf="linkForm.get('url')!.hasError('required') && linkFormSubmited">
+      <mat-error *ngIf="linkForm.get('linkUrl')!.hasError('required') && linkFormSubmited">
         URL is required.
       </mat-error>
       <mat-error *ngIf="invalidUrl && linkFormSubmited">
         Invalid URL format.
       </mat-error>
       <mat-label>Image URL: </mat-label>
-      <input [(ngModel)]="link.linkUrl" matInput formControlName="url" placeholder="Enter the image URL" />
+      <input matInput formControlName="linkUrl" placeholder="Enter the image URL" />
     </mat-form-field>
 
     <mat-form-field class="img-container">
@@ -41,9 +41,6 @@
         </button>
         <button *ngIf="isEditing" class="ghost text-gray-400 underline p-0 cursor-pointer ml-10" mat-button (click)="deleteLink()">Delete</button>
       </div>
-      
-
     </div>
-    
   </form>
 </mat-dialog-content>

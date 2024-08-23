@@ -4,7 +4,7 @@ import { PageService } from '@/app/core/services/page.service';
 import { MatDialog } from '@angular/material/dialog'; 
 import { AddLinkModalComponent } from '@/app/features/admin/components/add-link-modal/add-link-modal.component';
 import { LinksService } from '@/app/core/services/links.service';
-import { Link, LinkForm, LinkImage, LinkResult, Page } from '@/app/interfaces/index';
+import { Link, LinkImage, LinkResult, Page } from '@/app/interfaces/index';
 
 
 @Component({
@@ -55,7 +55,6 @@ export class AdminComponent implements OnInit{
 
   getLinks() {
     this.linksService.getLinks().subscribe( (l: Link[]) => {
-      console.log(l)
       this.links = l
     })
   }
@@ -73,7 +72,7 @@ export class AdminComponent implements OnInit{
     });
     
 
-    this.dialogRef.afterClosed().subscribe((linkRes: {link: LinkForm, action: string}) => {
+    this.dialogRef.afterClosed().subscribe((linkRes: {link: Link, action: string}) => {
       const {link, action} = linkRes
       if (action == 'add') {
         this.addLink(link)
@@ -81,18 +80,18 @@ export class AdminComponent implements OnInit{
     });
   }
 
-  addLink(link: LinkForm) {
+  addLink(link: Link) {
+    console.log(link)
     this.linksService.setLink(link).subscribe(r => {
-      console.log(r);
       this.getLinks();
     });
   }
 
-  editLink(link: LinkForm) {
-
+  editLink(link: Link) {
+    console.log(link)
   }
 
-  deleteLink(link: LinkForm) {
-    
+  deleteLink(link: Link) {
+    console.log(link)
   }
 }

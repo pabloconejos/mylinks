@@ -22,11 +22,11 @@ export class UserService {
   }
 
   setUser(user: userDataBase) {
-    console.log(user)
+    // console.log(user)
     try {
       const {background_color, background_emoji, background_html_id, bg_mode, creation_date, description, likes, mail, page_id, title, user_id, username, css_real_bg, mainColor, secondaryColor} = user
       const creationDate: Date = new Date(creation_date);
-      console.log(bg_mode)
+      // console.log(bg_mode)
       this.user = new User(
         user_id,
         username,

@@ -1,7 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { LinkImage } from '../../../../interfaces/LinksImages';
-import { Link, LinkForm } from '../../../../interfaces/Link';
+import { Link } from '../../../../interfaces/Link';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { errorContext } from 'rxjs/internal/util/errorContext';
 
@@ -13,23 +13,11 @@ import { errorContext } from 'rxjs/internal/util/errorContext';
 })
 export class AddLinkModalComponent implements OnInit {
 
-  linkForm: FormGroup;
+  linkForm!: FormGroup;
   imageIdSelect: number = 5;
   linkFormSubmited: boolean = false
   invalidUrl: boolean = false
   images!: LinkImage[]
-  link: Link = {
-    id: '',
-    userId: '',
-    pageId: '',
-    linkUrl: '',
-    title: '',
-    description: '',
-    creationDate: '',
-    imageId: 0,
-    imageName: '',
-    imageUrl: ''
-  };
   isEditing: boolean = false
 
   constructor(
@@ -37,31 +25,34 @@ export class AddLinkModalComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: {link: Link, linksImages: LinkImage[]},
     private fb: FormBuilder
   ) {
-    this.linkForm = this.fb.group({
-      title: ['', Validators.required],
-      description: [''],
-      url: ['', Validators.required],
-      image_id: [5]
-    });
+    
+    
   }
   
   ngOnInit(): void {
-    this.images = this.data.linksImages
-    if(this.data.link) {
-      this.link = this.data.link
-      this.isEditing = true
-      this.inicializarVariables()
-    }
+    
+    this.inicializarVariables()
   }
 
   inicializarVariables() {
+    const { link, linksImages} = this.data
+    this.images = linksImages
     
-    this.linkForm.value.title = this.link.title
-    this.linkForm.value.description = this.link.description
-    this.linkForm.value.url = this.link.linkUrl
-    this.linkForm.value.image_id = this.link.imageId
-    this.imageIdSelect = this.link.imageId
+    this.isEditing = this.data.link != null;
 
+    this.linkForm = this.fb.group({
+      id: [link?.id || ''],                      
+      userId: [link?.userId || ''],              
+      pageId: [link?.pageId || ''],              
+      title: [link?.title, Validators.required], 
+      description: [link?.description],     
+      linkUrl: [link?.linkUrl, Validators.required],
+      imageId: [link?.imageId || 5],
+      creationDate: [link?.creationDate],
+      imageName: [link?.imageName],
+      imageUrl: [link?.imageUrl]
+    });
+    this.imageIdSelect = this.linkForm.value.imageId
   }
 
   onNoClick(): void {
@@ -80,7 +71,7 @@ export class AddLinkModalComponent implements OnInit {
   onSubmit() {
 
     this.linkFormSubmited = true
-    const url = this.linkForm.get('url')!.value;
+    const url = this.linkForm.get('linkUrl')!.value;
 
     if (this.validateUrl(url)) {
       this.invalidUrl = false

@@ -1,4 +1,4 @@
-import { Link, LinkForm, LinkImage, LinkResult } from '@/app/interfaces';
+import { Link, LinkImage, LinkResult } from '@/app/interfaces';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { AddLinkModalComponent } from '../add-link-modal/add-link-modal.component';
