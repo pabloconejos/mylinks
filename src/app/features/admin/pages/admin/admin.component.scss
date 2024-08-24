@@ -8,10 +8,14 @@
 
 .link {
     width: 600px;
-    height: 120px;
-    border-radius: 20px;
-    transition: all 0.3s ease;
-    background: #ffffff
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+    transition: scale 0.5s ease-in-out;
+    box-shadow: 0 14px 28px rgba(147, 138, 138, 0.25), 
+            0 10px 10px rgba(0,0,0,0.22);
 }
 
 .generate-link {
@@ -48,8 +52,7 @@
 /* Pantallas grandes (Desktop) */
 @media (min-width: 1200px) {
     .link {
-        width: 600px;
-        height: 120px;
+        
     }
 }
 

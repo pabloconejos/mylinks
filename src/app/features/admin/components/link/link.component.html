@@ -3,13 +3,14 @@
         <img [src]="link.imageUrl" alt="">
     </div>
     <div class="main-section">
-        <p>{{link.title}}</p>
-        <p>{{link.description}}</p>
+        <p class="title">{{link.title}}</p>
+        <p class="linkUrl">{{link.description}}</p>
     </div>
     <div class="tools-section">
-        <img (click)="openDialog()" src="assets/svg/pencil.svg" alt="">
+        <img class="cursor-pointer" (click)="openDialog()" class="icon" src="assets/svg/pencil.svg" alt="">
+        <img class="cursor-pointer" (click)="openDialog()" class="icon" src="assets/svg/trash.svg" alt="">
         <a [href]="link.linkUrl" target="_blank">
-            <img src="assets/svg/share.svg" alt="Go to the link page">
+            <img src="assets/svg/share.svg" class="icon" alt="Go to the link page">
         </a>
     </div>
 

@@ -1,110 +1,102 @@
 :host {
-    width: 600px;
-    height: 120px;
-    border-radius: 20px;
+    border-radius: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 20px;
+    margin: 10px;
     transition: scale 0.5s ease-in-out;
     box-shadow: 0 14px 28px rgba(147, 138, 138, 0.25), 
             0 10px 10px rgba(0,0,0,0.22);
     scale: 1;
+    background-color: #ffff;
+    padding: 5px;
 
     @starting-style {
         scale: 0
     }
-    background-color: #ffff
 }
 
 .link {
     width: 100%;
+    height: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 16px;
-    cursor: pointer;
 }
 
-.image-section img {
-    max-width: 100px;
+img {
+    max-width: 50px;
+    margin: 10px;
 }
 
 .main-section {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-
-    h1{
-        font-size: 17px;
-        font-weight: bold;
-    }
-
-    h3 {
-        font-size: 14px;
-        font-weight: bold;
-    }
-}
-
-.tools-section{
+    width: 100%;
     height: 100%;
     display: flex;
-    justify-content: space-around;
-    align-items: center;
+    justify-items: start;
+    align-items: start;
     flex-direction: column;
-    gap: 16px;
+    margin-left: 10px;
+    gap: 4px;
+
+    .title {
+        font-weight: bold;
+    }
 }
 
+.tools-section {
+    display: flex;
+}
+
+.icon {
+    border-radius: 10px;
+    padding: 8px;
+    transition: all 0.2s ease-in-out; 
+}
+
+.icon:hover {
+    background-color: rgba(192, 192, 192, 0.499);
+}
 
 /* Pantallas grandes (Desktop) */
 @media (min-width: 1200px) {
     :host {
         width: 600px;
-        height: 120px;
+        // height: 100px;
     }
 }
 
 /* Pantallas medianas (Laptops, Tablets grandes) */
 @media (min-width: 992px) and (max-width: 1199px) {
     :host {
-        width: 500px;
-        height: 120px;
+        
     }
 }
 
 /* Pantallas pequeñas (Tablets, Phablets) */
 @media (min-width: 768px) and (max-width: 991px) {
     :host {
-        width: 100%;
-        height: 120px;
-        margin: 20px;
+       
     }
 }
 
 /* Pantallas muy pequeñas (Teléfonos móviles en orientación vertical) */
 @media (min-width: 576px) and (max-width: 767px) {
     :host {
-        width: 100%;
-        height: 120px;
-        margin: 20px;
+        
     }
 }
 
 /* Pantallas extra pequeñas (Móviles pequeños) */
 @media (max-width: 575px) {
     :host {
-        width: 100%;
-        height: 120px;
-        margin: 20px;
+        
     }
 }
 
 /* Pantallas extremadamente pequeñas (Dispositivos antiguos o smartwatches) */
 @media (max-width: 360px) {
     :host {
-        width: 100%;
-        height: 120px;
-        margin: 20px;
+        
     }
 }
