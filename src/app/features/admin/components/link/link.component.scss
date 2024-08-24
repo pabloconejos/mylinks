@@ -3,7 +3,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 10px;
     transition: scale 0.5s ease-in-out;
     box-shadow: 0 14px 28px rgba(147, 138, 138, 0.25), 
             0 10px 10px rgba(0,0,0,0.22);
@@ -52,6 +51,8 @@ img {
     border-radius: 10px;
     padding: 8px;
     transition: all 0.2s ease-in-out; 
+    margin: 0;
+    //padding: 0;
 }
 
 .icon:hover {
@@ -60,43 +61,43 @@ img {
 
 /* Pantallas grandes (Desktop) */
 @media (min-width: 1200px) {
-    :host {
-        width: 600px;
-        // height: 100px;
+    .icon {
+        
     }
+    
 }
 
 /* Pantallas medianas (Laptops, Tablets grandes) */
 @media (min-width: 992px) and (max-width: 1199px) {
-    :host {
+    .icon {
         
     }
 }
 
 /* Pantallas pequeñas (Tablets, Phablets) */
 @media (min-width: 768px) and (max-width: 991px) {
-    :host {
-       
+    .icon {
+        
     }
 }
 
 /* Pantallas muy pequeñas (Teléfonos móviles en orientación vertical) */
 @media (min-width: 576px) and (max-width: 767px) {
-    :host {
-        
+    .description{
+        display: block;
     }
 }
 
 /* Pantallas extra pequeñas (Móviles pequeños) */
 @media (max-width: 575px) {
-    :host {
-        
+    .description{
+        display: none;
     }
 }
 
 /* Pantallas extremadamente pequeñas (Dispositivos antiguos o smartwatches) */
 @media (max-width: 360px) {
-    :host {
-        
+    .description{
+        display: none;
     }
 }

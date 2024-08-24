@@ -1,0 +1,39 @@
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: fixed;
+    top: 0;
+}
+
+.logo-section{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 10px;
+}
+
+.main-section {
+    margin: 10px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 15%;
+    ul {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+    }
+}
+
+/* Pantallas pequeñas (Tablets, Phablets) */
+@media (max-width: 991px) {
+    .main-section { 
+        ul {
+            display: none;
+        }
+    }
+
+
+}
