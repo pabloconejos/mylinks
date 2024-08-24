@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivate, CanActivateFn, Router, RouterStateSnapshot } from '@angular/router';
-import { Observable, map, catchError, of } from 'rxjs';
+import { CanActivate, Router, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
+import { Observable, of } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
 import { PageService } from '../services/page.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class HavePageGuard implements CanActivate {
+export class HaveToCreatePageGuard implements CanActivate {
   constructor(private pageService: PageService, private router: Router) {}
 
   canActivate(
@@ -15,12 +16,11 @@ export class HavePageGuard implements CanActivate {
   ): Observable<boolean> {
     return this.pageService.havePage().pipe(
       map(response => {
-        console.log(response.page)
         if (response.page) {
-          this.router.navigate(['/admin']);
-          return false;
-        } else {
           return true;
+        } else {
+          this.router.navigate(['admin/create']);
+          return false;
         }
       }),
       catchError((error) => {
@@ -30,4 +30,3 @@ export class HavePageGuard implements CanActivate {
     );
   }
 }
-
