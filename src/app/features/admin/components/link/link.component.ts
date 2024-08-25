@@ -21,6 +21,11 @@ export class LinkComponent {
 
   constructor(public dialog: MatDialog) {}
 
+
+  deleteLink() {
+    this.linkEvent.emit({link: this.link, action: 'delete'})
+  }
+
   openDialog() {
     this.dialogRef = this.dialog.open(AddLinkModalComponent, {
       width: '600px', // Puedes ajustar el ancho

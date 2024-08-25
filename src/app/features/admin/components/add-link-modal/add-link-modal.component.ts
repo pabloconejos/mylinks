@@ -59,9 +59,7 @@ export class AddLinkModalComponent implements OnInit {
     this.dialogRef.close({link: null, action: 'close'});
   }
 
-  deleteLink() {
-    this.dialogRef.close({link: this.linkForm.value, action: 'delete'});
-  }
+  
 
   validateUrl(url: string): boolean {
     const urlPattern = /^(https?:\/\/[^\s/$.?#].[^\s]*)$/i;

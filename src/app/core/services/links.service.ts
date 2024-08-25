@@ -18,7 +18,11 @@ export class LinksService {
   }
 
   setLink(link: Link) {
-    return this.http.post<any>(this.URI+'links/link', {link}, { withCredentials: true })
+    return this.http.post<{linkId: string}>(this.URI+'links/link', {link}, { withCredentials: true })
+  }
+
+  deleteLink(link: Link) {
+    return this.http.delete<{linkId: string}>(this.URI+'links/link', {body: link.id})
   }
 
   getLinks() {
