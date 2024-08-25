@@ -22,7 +22,11 @@ export class LinksService {
   }
 
   deleteLink(link: Link) {
-    return this.http.delete<{linkId: string}>(this.URI+'links/link', {body: link.id})
+    return this.http.delete<{linkId: string}>(`${this.URI}links/link/${link.id}`, { withCredentials: true })
+  }
+
+  editLink(link: Link) {
+    return this.http.patch<{link: Link}>(`${this.URI}links/link`,{link}, { withCredentials: true })
   }
 
   getLinks() {

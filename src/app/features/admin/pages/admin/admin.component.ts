@@ -82,20 +82,22 @@ export class AdminComponent implements OnInit{
 
   addLink(link: Link) {
     this.linksService.setLink(link).subscribe(r => {
-      console.log(r) 
       this.getLinks();
     });
   }
 
   editLink(link: Link) {
     console.log(link)
-    
+    this.linksService.editLink(link).subscribe( r => {
+      console.log(r)
+      this.getLinks()
+    })
   }
 
   deleteLink(link: Link) {
-    console.log(link)
     this.linksService.deleteLink(link).subscribe( r => {
-      this.getLinks()
+      this.links = this.links.filter( l => l.id != link.id)
+      // this.getLinks()
     })
   }
 }
