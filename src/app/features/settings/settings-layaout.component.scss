@@ -1,0 +1,55 @@
+.settings-title {
+    font-weight: bold;
+    color: var(--primary-pink);
+    margin-bottom: 10px;
+    font-size: 2vw;
+}
+
+.list-item a{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: color 0.2s ease-in-out;
+}
+
+.list-item {
+    padding: 5px;
+    border-radius: 10px;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.list-item img {
+    width: 24px;
+    height: 24px;
+    margin: 0;
+    padding: 0;
+    transition: filter 0.2s ease-in-out;
+  }
+
+  .list-item span {
+    line-height: 24px;
+  }
+
+.list-item:hover {
+    background-color: #ff69b48e;
+
+    a {
+        color: white;
+    }
+
+    img {
+        filter: brightness(0) invert(1);
+    }
+}
+
+.active {
+    background-color: #ff69b48e;
+}
+
+.active a {
+    color: white;
+}
+
+.active img{
+    filter: brightness(0) invert(1);
+}

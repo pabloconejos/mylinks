@@ -29,6 +29,10 @@ const routes: Routes = [
     path: 'create/start', 
     component: PageStartConfigComponent,
     canActivate: [HavePageGuard]
+  },
+  {
+    path: 'settings',
+    loadChildren: () => import('../settings/settings.module').then(m => m.SettingsModule)
   }
 
 ]

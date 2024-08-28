@@ -1,0 +1,18 @@
+.user-container {
+    margin: 0 50px 0 50px;
+}
+
+
+.form-input {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.title {
+    font-weight: bold;
+    color: var(--primary-pink);
+    margin-bottom: 10px;
+    font-size: 2vw;
+}
