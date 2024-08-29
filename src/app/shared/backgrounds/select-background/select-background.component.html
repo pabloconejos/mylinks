@@ -1,0 +1,11 @@
+<div #containerTwo class="container right-translate container-bg relative">
+    @for ( bg of backgrounds; track bg.id ) {
+        <div [ngClass]="{'bg-section-active': bg.id == bgHtmlIdSelected}" class="bg-section relative">
+            <div (click)="selectBg(bg.id)" [class]="bg.css_viewer_bg">
+                
+            </div>
+        </div>
+    }
+</div>
+
+
