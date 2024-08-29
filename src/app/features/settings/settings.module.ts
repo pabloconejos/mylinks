@@ -5,6 +5,7 @@ import { SettingsLayaoutComponent } from './settings-layaout.component';
 import { PageSettingsComponent } from './pages/page-settings/page-settings.component';
 import { UserSettingsComponent } from './pages/user-settings/user-settings.component';
 import { SharedModule } from "../../shared/shared.module";
+import { ReactiveFormsModule } from '@angular/forms';
 
 const routes: Routes = [
   {
@@ -27,7 +28,8 @@ const routes: Routes = [
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
-    SharedModule
+    SharedModule,
+    ReactiveFormsModule
 ]
 })
 export class SettingsModule { }

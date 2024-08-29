@@ -1,28 +1,32 @@
 <div class="user-container">
-    <form action="">
+    <form [formGroup]="pageForm" action="">
         <h1 class="title">Page Information</h1>
         <div class="form-input">
             <label for="">Title</label>
-            <input type="text" placeholder="Enter a title">
+            <input formControlName="pageName" type="text" placeholder="Enter a title" [ngClass]="{'is-valid': pageFormSubmitted && lfPage['pageName'].errors == null,
+                'is-invalid': pageFormSubmitted && lfPage['pageName'].errors != null}">
         </div>
         <div class="form-input">
             <label for="">Description</label>
-            <textarea type="text" placeholder="Enter a description for your page"></textarea>
+            <textarea formControlName="pageDescription" type="text" placeholder="Enter a description for your page" [ngClass]="{'is-valid': pageFormSubmitted && lfPage['pageDescription'].errors == null,
+                'is-invalid': pageFormSubmitted && lfPage['pageDescription'].errors != null}"></textarea>
         </div>
         <div class="form-input">
             <label for="">Main Color</label>
-            <input class="p-1" type="color" placeholder="Select your page color">
+            <input formControlName="mainColor" class="p-1" type="color" placeholder="Select your page color" [ngClass]="{'is-valid': pageFormSubmitted && lfPage['mainColor'].errors == null,
+                'is-invalid': pageFormSubmitted && lfPage['mainColor'].errors != null}">
         </div>
         <div class="form-input">
             <label for="">Secondary Color</label>
-            <input class="p-1" type="color" placeholder="Select your page color">
+            <input ormControlName="secondaryColor" class="p-1" type="color" placeholder="Select your page color" [ngClass]="{'is-valid': pageFormSubmitted && lfPage['secondaryColor'].errors == null,
+                'is-invalid': pageFormSubmitted && lfPage['secondaryColor'].errors != null}">
         </div>
 
          <div class="form-input">
             <label for="">Page Background</label>
             <app-select-background (bgSelectedEvent)="selectBg($event)" [bgHtmlIdSelected]="1"></app-select-background>
          </div>
-        <button class="w-full my-3">Save</button>
+        <button (click)="savePage()" class="w-full my-3">Save</button>
 
     </form>
 </div>

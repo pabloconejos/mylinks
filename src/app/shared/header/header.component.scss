@@ -27,6 +27,11 @@
     }
 }
 
+.dropdown-menu {
+    position: absolute;
+    left: -150px;
+}
+
 /* Pantallas pequeñas (Tablets, Phablets) */
 @media (max-width: 991px) {
     .main-section { 
@@ -34,6 +39,4 @@
             display: none;
         }
     }
-
-
 }

@@ -1,3 +1,8 @@
+.container {
+    display: flex;
+    flex-direction: row;
+}
+
 .settings-title {
     font-weight: bold;
     color: var(--primary-pink);
@@ -52,4 +57,23 @@
 
 .active img{
     filter: brightness(0) invert(1);
+}
+
+.nav-mini {
+    display: none;
+}
+
+@media screen and (max-width: 730px) {
+    .nav-full {
+        display: none;
+    }
+
+    .nav-mini {
+        display: block;
+    }
+
+    .container {
+        display: flex;
+        flex-direction: column;
+    }
 }

@@ -1,28 +1,34 @@
 <div class="user-container">
-    <form action="">
-        <h1 class="title">User information</h1>
-        <div class="form-input">
-            <label for="">Username</label>
-            <input type="text" placeholder="Enter your username">
-        </div>
-        <div class="form-input">
-            <label for="">Email</label>
-            <input type="text" placeholder="Enter your email">
-        </div>
-        <button class="w-full my-3">Save</button>
-
-        <hr class="my-2">
-
-        <h1 class="title">Change Password</h1>
-        <div class="form-input">
-            <label for="">Password</label>
-            <input type="password" placeholder="Old password">
-        </div>
-        <div class="form-input">
-            <label for="">New Password</label>
-            <input type="text" placeholder="New Password">
-        </div>
-        <button class="w-full my-3">Change Password</button>
-
+    <form [formGroup]="userForm" action="">
+      <h1 class="title">User information</h1>
+      <div class="form-input">
+        <label for="">Username</label>
+        <input formControlName="username" type="text" placeholder="Enter your username" [ngClass]="{'is-valid': userFormSubmitted && lfUser['username'].errors == null,
+                'is-invalid': userFormSubmitted && lfUser['username'].errors != null}">
+      </div>
+      <div class="form-input">
+        <label for="">Email</label>
+        <input formControlName="mail" type="text" placeholder="Enter your email" [ngClass]="{'is-valid': userFormSubmitted && lfUser['mail'].errors == null,
+                'is-invalid': userFormSubmitted && lfUser['mail'].errors != null}">
+      </div>
+      <button (click)="saveUser()" class="w-full my-3">Save</button>
     </form>
-</div>
+  
+    <hr class="my-2">
+  
+    <form [formGroup]="passwordForm" action="">
+      <h1 class="title">Change Password</h1>
+      <div class="form-input">
+        <label for="">Password</label>
+        <input formControlName="oldPassword" type="password" placeholder="Old password" [ngClass]="{'is-valid': passwordFormSubmitted && lfPassword['oldPassword'].errors == null,
+                'is-invalid': passwordFormSubmitted && lfPassword['oldPassword'].errors != null}">
+      </div>
+      <div class="form-input">
+        <label for="">New Password</label>
+        <input formControlName="newPassword" type="password" placeholder="New Password" [ngClass]="{'is-valid': passwordFormSubmitted && lfPassword['newPassword'].errors == null,
+                'is-invalid': passwordFormSubmitted && lfPassword['newPassword'].errors != null}">
+      </div>
+      <button (click)="savePasword()" class="w-full my-3">Change Password</button>
+    </form>
+  </div>
+  
