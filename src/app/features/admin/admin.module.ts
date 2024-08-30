@@ -28,7 +28,7 @@ const routes: Routes = [
   {
     path: 'create/start', 
     component: PageStartConfigComponent,
-    // canActivate: [HavePageGuard]
+    canActivate: [HavePageGuard]
   },
   {
     path: 'settings',

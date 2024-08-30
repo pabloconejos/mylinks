@@ -12,8 +12,9 @@
     </div>
 
     <div class="useer-section m-3 relative">
-        <img class="rounded-full bg-slate-100 cursor-pointer p-1" src="assets/svg/user.svg" alt="">
-        <div id="dropdown" class="dropdown-menu z-10 bg-white divide-y divide-gray-100 rounded-lg shadow w-44">
+        <img (click)="showMenu()" class="rounded-full bg-slate-100 cursor-pointer p-1" src="assets/svg/user.svg" alt="">
+        @if (isMenuOpen) {
+          <div id="dropdown" class="dropdown-menu z-10 bg-white divide-y divide-gray-100 rounded-lg shadow w-44">
             <ul class="py-2 text-sm text-gray-200" aria-labelledby="dropdownDefaultButton">
               <li> <!-- solo en pantallas pequeñas -->
                 <a routerLink="/" class="block px-4 py-2 hover:bg-gray-100">Home</a>
@@ -29,5 +30,6 @@
               </li>
             </ul>
         </div>
+        }
     </div>
 </section>

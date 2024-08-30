@@ -24,7 +24,7 @@
 
          <div class="form-input">
             <label for="">Page Background</label>
-            <app-select-background (bgSelectedEvent)="selectBg($event)" [bgHtmlIdSelected]="1"></app-select-background>
+            <app-select-background (bgSelectedEvent)="selectBg($event)" [bgHtmlIdSelected]="selectedBg"></app-select-background>
          </div>
         <button (click)="savePage()" class="w-full my-3">Save</button>
 

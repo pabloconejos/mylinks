@@ -1,6 +1,7 @@
 import { User } from '@/app/interfaces';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UserService } from '../../../../core/services/user.service';
 
 @Component({
   selector: 'app-user-settings',
@@ -15,14 +16,20 @@ export class UserSettingsComponent implements OnInit{
   user!: User;
   userFormSubmitted: boolean = false
   passwordFormSubmitted: boolean = false
-  constructor(private fb: FormBuilder) {
 
+  constructor(
+    private fb: FormBuilder,
+    private userService: UserService
+  ) 
+  {
+    this.user = this.userService.user
   }
 
   ngOnInit(): void {
+
     this.userForm = this.fb.group({
-      mail: [this.user?.id || '', [Validators.required, Validators.email]],                 
-      username: [this.user?.username || '', [Validators.required]]
+      mail: [this.user.mail || '', [Validators.required, Validators.email]],                 
+      username: [this.user.username || '', [Validators.required]]
     });
 
     this.passwordForm = this.fb.group({
@@ -30,6 +37,9 @@ export class UserSettingsComponent implements OnInit{
       newPassword: ['', [Validators.required, Validators.minLength(5)]]
     });
   }
+
+
+  
 
   get lfUser() {
     return this.userForm.controls;

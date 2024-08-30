@@ -1,3 +1,5 @@
+import { PageService } from '@/app/core/services/page.service';
+import { Page } from '@/app/interfaces';
 import { identifierName } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -11,20 +13,28 @@ export class PageSettingsComponent implements OnInit{
 
   pageForm!: FormGroup
   selectedBg: number = 1;
+  page!: Page
 
   pageFormSubmitted: boolean = false
-  constructor(private fb: FormBuilder) {
-
+  constructor
+  (
+    private fb: FormBuilder,
+    private pageService: PageService
+  ) {
+    this.page = this.pageService.page
   }
 
   ngOnInit(): void {
     this.pageForm = this.fb.group({
-      pageName: ['New Page', [Validators.required]],
-      pageDescription: ['', []],
-      mainColor: ['#00000', []],
-      secondaryColor: ['#00000', []],
-      cssBg: [1, []]
+      pageName: [this.page.title || 'New Page', [Validators.required]],
+      pageDescription: [this.page.description, []],
+      mainColor: [this.page.mainColor || '#00000', []],
+      secondaryColor: [this.page.secondaryColor ||'#00000', []],
+      cssBg: [ this.page.background_html_id || 1, []]
     });
+
+    this.selectedBg = this.page.background_html_id
+
   }
 
   get lfPage() {
