@@ -17,6 +17,7 @@ export class UserService {
   constructor(private http: HttpClient) { }
 
 
+
   getUser() {
     return this.http.get<userDataBase>(this.URI+'auth/user', { withCredentials: true });
   }
@@ -51,7 +52,9 @@ export class UserService {
     } catch (e) {
       return e
     }
-    
+  }
 
+  updateUser(userData: {username: string, mail: string}) {
+    return this.http.patch<userDataBase>(this.URI+'user/update', {userData} , { withCredentials: true })
   }
 }

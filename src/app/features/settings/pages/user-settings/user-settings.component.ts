@@ -18,6 +18,8 @@ export class UserSettingsComponent implements OnInit{
   userFormSubmitted: boolean = false
   passwordFormSubmitted: boolean = false
 
+  errorUser: boolean = false
+
   constructor(
     private fb: FormBuilder,
     private userService: UserService
@@ -58,14 +60,24 @@ export class UserSettingsComponent implements OnInit{
 
   saveUser() {
     this.userFormSubmitted = true
-    const { value } = this.userForm
-    console.log(value)
+    if (this.userForm.valid) {
+      const { value } = this.userForm
+      this.userService.updateUser(value).subscribe( response => {
+        this.userService.user.mail = value.mail
+        this.userService.user.username = value.username
+      }, error => {
+        // TODO: AVISAR DE QUE ALGO HA FALLADO
+        this.errorUser = true
+      })
+    }
   }
 
   savePasword() {
     this.passwordFormSubmitted = true
-    const { value } = this.passwordForm
-    console.log(value)
+    if (this.passwordForm.valid) {
+      const { value } = this.passwordForm
+      console.log(value)
+    }
   }
 
 }

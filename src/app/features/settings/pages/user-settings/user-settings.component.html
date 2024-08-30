@@ -4,14 +4,14 @@
       <div class="form-input">
         <label for="">Username</label>
         <input formControlName="username" type="text" placeholder="Enter your username" [ngClass]="{'is-valid': userFormSubmitted && lfUser['username'].errors == null,
-                'is-invalid': userFormSubmitted && lfUser['username'].errors != null}">
+                'is-invalid': userFormSubmitted && lfUser['username'].errors != null || errorUser}">
       </div>
       <div class="form-input">
         <label for="">Email</label>
         <input formControlName="mail" type="text" placeholder="Enter your email" [ngClass]="{'is-valid': userFormSubmitted && lfUser['mail'].errors == null,
-                'is-invalid': userFormSubmitted && lfUser['mail'].errors != null}">
+                'is-invalid': userFormSubmitted && lfUser['mail'].errors != null || errorUser}">
       </div>
-      <button (click)="saveUser()" class="w-full my-3">Save</button>
+      <button [ngClass]="{'disabled': lfUser['username'].errors || lfUser['mail'].value.length <= 0}" (click)="saveUser()" class="w-full my-3">Save</button>
     </form>
   
     <hr class="my-2">
