@@ -15,9 +15,11 @@
 </nav>
 
   <div class="flex-grow flex justify-center">
-    <div class="w-full max-w-[1200px]">
+    @if (userService.user) {
+      <div class="w-full max-w-[1200px]">
         <router-outlet></router-outlet>
-    </div>
+      </div>
+    }
   </div>
 </div>
 
