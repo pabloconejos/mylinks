@@ -3,6 +3,8 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserService } from '../../../../core/services/user.service';
 import { Notification } from '@/app/interfaces'
+import { AuthService } from '@/app/core/services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-settings',
@@ -26,6 +28,8 @@ export class UserSettingsComponent implements OnInit{
   constructor(
     private fb: FormBuilder,
     private userService: UserService,
+    private authService: AuthService,
+    private router: Router
   ) 
   {
 
@@ -82,8 +86,11 @@ export class UserSettingsComponent implements OnInit{
       const { value } = this.passwordForm
       this.userService.changePassword(value).subscribe( response => {
         this.showNotification({ message: 'Success! Your changes have been saved.', type: 0 });
-        // TODO: LOGOUT
+        // TODO: avisar que se te deslogueara LOGOUT
+        this.authService.logOut()
+        this.router.navigate(['/auth'])
       }, error => {
+        console.log(error)
         this.showNotification({ message: 'Failed to complete the operation. Please try again.', type: 1});
         this.errorUser = true
       })
