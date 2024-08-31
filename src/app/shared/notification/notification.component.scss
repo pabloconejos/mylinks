@@ -1,0 +1,16 @@
+.notification {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 20px;
+    opacity: 1;
+    transition: opacity 0.2s ease-in-out, display .2s ease;
+
+    @starting-style {
+        opacity: 0;
+    }
+}
+
+.close {
+    display: none;
+}

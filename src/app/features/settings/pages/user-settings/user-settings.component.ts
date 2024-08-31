@@ -2,6 +2,7 @@ import { User } from '@/app/interfaces';
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserService } from '../../../../core/services/user.service';
+import { Notification } from '@/app/interfaces'
 
 @Component({
   selector: 'app-user-settings',
@@ -19,10 +20,12 @@ export class UserSettingsComponent implements OnInit{
   passwordFormSubmitted: boolean = false
 
   errorUser: boolean = false
+  isNotificationVisible: boolean = false
+  notification!: Notification;
 
   constructor(
     private fb: FormBuilder,
-    private userService: UserService
+    private userService: UserService,
   ) 
   {
 
@@ -65,8 +68,9 @@ export class UserSettingsComponent implements OnInit{
       this.userService.updateUser(value).subscribe( response => {
         this.userService.user.mail = value.mail
         this.userService.user.username = value.username
+        this.showNotification({ message: 'Success! Your changes have been saved.', type: 0 });
       }, error => {
-        // TODO: AVISAR DE QUE ALGO HA FALLADO
+        this.showNotification({ message: 'Failed to complete the operation. Please try again.', type: 1});
         this.errorUser = true
       })
     }
@@ -78,6 +82,15 @@ export class UserSettingsComponent implements OnInit{
       const { value } = this.passwordForm
       console.log(value)
     }
+  }
+
+  showNotification(info: Notification) {
+    this.notification = info;
+    this.isNotificationVisible = true;
+
+    setTimeout(() => {
+      this.isNotificationVisible = false;
+    }, 3000);
   }
 
 }

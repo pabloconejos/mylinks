@@ -30,5 +30,10 @@
       </div>
       <button (click)="savePasword()" class="w-full my-3">Change Password</button>
     </form>
-  </div>
+</div>
+
+@if (isNotificationVisible) {
+  <app-notification [notification]="notification"></app-notification>
+}
+
   
