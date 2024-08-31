@@ -80,7 +80,13 @@ export class UserSettingsComponent implements OnInit{
     this.passwordFormSubmitted = true
     if (this.passwordForm.valid) {
       const { value } = this.passwordForm
-      console.log(value)
+      this.userService.changePassword(value).subscribe( response => {
+        this.showNotification({ message: 'Success! Your changes have been saved.', type: 0 });
+        // TODO: LOGOUT
+      }, error => {
+        this.showNotification({ message: 'Failed to complete the operation. Please try again.', type: 1});
+        this.errorUser = true
+      })
     }
   }
 

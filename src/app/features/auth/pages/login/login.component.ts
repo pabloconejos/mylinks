@@ -3,7 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../../../../core/services/auth.service';
 import { LoginDTO } from '../../../../interfaces/User';
-
+import { Notification } from '@/app/interfaces';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -16,6 +16,8 @@ export class LoginComponent {
   loginFormSubmitted = false;
   loginError: boolean = false;
   loading: boolean = false;
+  isNotificationVisible: boolean = false
+  notification!: Notification;
 
   constructor(
     private authService: AuthService,
@@ -57,6 +59,7 @@ export class LoginComponent {
       this.router.navigate(['/admin']);
     }, error => {
       console.log(error)
+      this.showNotification({ message: 'Error! Wrong credentials.', type: 1 });
       this.loading = false
       this.loginError = true
     })
@@ -66,4 +69,12 @@ export class LoginComponent {
     this.router.navigate([ruta]);
   }
 
+  showNotification(info: Notification) {
+    this.notification = info;
+    this.isNotificationVisible = true;
+
+    setTimeout(() => {
+      this.isNotificationVisible = false;
+    }, 3000);
+  }
 }

@@ -57,4 +57,8 @@ export class UserService {
   updateUser(userData: {username: string, mail: string}) {
     return this.http.patch<userDataBase>(this.URI+'user/update', {userData} , { withCredentials: true })
   }
+
+  changePassword(password: {newPassword: string, oldPassword: string}) {
+    return this.http.patch<string>(this.URI+'user/changePassword', {password}, {withCredentials: true})
+  }
 }

@@ -9,9 +9,9 @@
                 </div>
                 <span>or use your account</span>
                 <input formControlName="mail" type="email" placeholder="Email" [ngClass]="{'is-valid': loginFormSubmitted && lf['mail'].errors == null,
-                'is-invalid': loginFormSubmitted && lf['mail'].errors != null}" />
+                'is-invalid': loginFormSubmitted && lf['mail'].errors != null || loginError}" />
                 <input formControlName="password" type="password" placeholder="Password" [ngClass]="{'is-valid': loginFormSubmitted && lf['password'].errors == null,
-                'is-invalid': loginFormSubmitted && lf['password'].errors != null}" />
+                'is-invalid': loginFormSubmitted && lf['password'].errors != null || loginError}" />
                 <a href="#">Forgot your password?</a>
                 <button (click)="login()">
                     @if (!loading) {
@@ -36,4 +36,6 @@
     </div>
 </div>
 
-
+@if (isNotificationVisible) {
+    <app-notification [notification]="notification"></app-notification>
+  }
