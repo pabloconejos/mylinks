@@ -71,3 +71,12 @@ export class Page implements Page {
 }
 
 
+export interface UpdatePage {
+    pageName: string,
+    pageDescription: string,
+    emojiBg: string,
+    colorBg: string,
+    cssBg: number,
+    mainColor: string,
+    secondaryColor: string
+}

@@ -18,7 +18,7 @@
         </div>
         <div class="form-input">
             <label for="">Secondary Color</label>
-            <input ormControlName="secondaryColor" class="p-1" type="color" placeholder="Select your page color" [ngClass]="{'is-valid': pageFormSubmitted && lfPage['secondaryColor'].errors == null,
+            <input formControlName="secondaryColor" class="p-1" type="color" placeholder="Select your page color" [ngClass]="{'is-valid': pageFormSubmitted && lfPage['secondaryColor'].errors == null,
                 'is-invalid': pageFormSubmitted && lfPage['secondaryColor'].errors != null}">
         </div>
 
@@ -30,3 +30,7 @@
 
     </form>
 </div>
+
+@if (isNotificationVisible) {
+    <app-notification [notification]="notification"></app-notification>
+  }

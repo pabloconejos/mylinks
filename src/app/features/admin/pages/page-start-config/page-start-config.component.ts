@@ -66,7 +66,9 @@ export class PageStartConfigComponent implements AfterViewInit, OnInit{
         pageDescription: ['', []],
         emojiBg: ['', []],
         colorBg: ['#ffffff', []],
-        cssBg: ['', []]
+        cssBg: ['', []],
+        mainColor: ['#fffff', []],
+        secondaryColor: ['#fffff', []]
       });
       
       this.bgService.getBackgrounds().subscribe( bg => {

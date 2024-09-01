@@ -1,8 +1,8 @@
 import { PageService } from '@/app/core/services/page.service';
 import { Page } from '@/app/interfaces';
-import { identifierName } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Notification } from '@/app/interfaces';
 
 @Component({
   selector: 'app-page-settings',
@@ -16,6 +16,10 @@ export class PageSettingsComponent implements OnInit{
   page!: Page
 
   pageFormSubmitted: boolean = false
+
+  isNotificationVisible: boolean = false
+  notification!: Notification;
+
   constructor
   (
     private fb: FormBuilder,
@@ -30,7 +34,9 @@ export class PageSettingsComponent implements OnInit{
       pageDescription: [this.page.description, []],
       mainColor: [this.page.mainColor || '#00000', []],
       secondaryColor: [this.page.secondaryColor ||'#00000', []],
-      cssBg: [ this.page.background_html_id || 1, []]
+      cssBg: [ this.page.background_html_id || 1, []],
+      emojiBg: ['', []],
+      colorBg: ['#ffffff', []],
     });
 
     this.selectedBg = this.page.background_html_id
@@ -50,6 +56,31 @@ export class PageSettingsComponent implements OnInit{
     this.pageFormSubmitted = true;
     const { value } = this.pageForm
     value.cssBg = this.selectedBg
-    console.log(value)
+    console.log(value.secondaryColor)
+    if( this.pageForm.valid ) {
+      this.pageService.updatePage(value).subscribe( response => {
+        if(response.pageId) {
+          this.reset()
+          this.showNotification({ message: 'Success! Your changes have been saved.', type: 0 });
+        }
+      }, error => {
+        this.showNotification({ message: 'Failed to complete the operation. Please try again.', type: 1});
+      })
+    }
+    
+  }
+
+
+  reset(){
+    // TODO: RECUPERAR PAGE DE LA BD CON LA NUEVA INFO
+  }
+
+  showNotification(info: Notification) {
+    this.notification = info;
+    this.isNotificationVisible = true;
+
+    setTimeout(() => {
+      this.isNotificationVisible = false;
+    }, 3000);
   }
 }

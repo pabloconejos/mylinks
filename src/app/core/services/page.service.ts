@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { environment } from '../../../environments/environment';
-import { Page, User } from '../../interfaces/index';
+import { Page, UpdatePage, User } from '../../interfaces/index';
 
 
 @Injectable({
@@ -21,6 +21,7 @@ export class PageService {
 
 
   setPage(user: User) {
+    console.log(user)
     this.page = new Page(
       user.page.id,
       user.page.user_id,
@@ -46,7 +47,7 @@ export class PageService {
     return this.http.post<{pageId : string}>(this.URI + 'create', {}, { withCredentials: true });
   }
 
-  updatePage(data: any) {
+  updatePage(data: UpdatePage) {
     return this.http.patch<{pageId : string}>(this.URI + 'update', {data}, { withCredentials: true });
   }
   
