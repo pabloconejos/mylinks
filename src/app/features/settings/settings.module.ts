@@ -6,6 +6,7 @@ import { PageSettingsComponent } from './pages/page-settings/page-settings.compo
 import { UserSettingsComponent } from './pages/user-settings/user-settings.component';
 import { SharedModule } from "../../shared/shared.module";
 import { ReactiveFormsModule } from '@angular/forms';
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 
 const routes: Routes = [
   {
@@ -29,7 +30,8 @@ const routes: Routes = [
     CommonModule,
     RouterModule.forChild(routes),
     SharedModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SweetAlert2Module
 ]
 })
 export class SettingsModule { }

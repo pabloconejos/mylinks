@@ -5,6 +5,7 @@ import { UserService } from '../../../../core/services/user.service';
 import { Notification } from '@/app/interfaces'
 import { AuthService } from '@/app/core/services/auth.service';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-user-settings',
@@ -66,8 +67,8 @@ export class UserSettingsComponent implements OnInit{
   }
 
   saveUser() {
-    this.userFormSubmitted = true
     if (this.userForm.valid) {
+      this.userFormSubmitted = true
       const { value } = this.userForm
       this.userService.updateUser(value).subscribe( response => {
         this.userService.user.mail = value.mail
@@ -81,19 +82,37 @@ export class UserSettingsComponent implements OnInit{
   }
 
   savePasword() {
+    if (this.passwordForm.valid) { 
+      Swal.fire({
+        title: "Are you sure?",
+        text: "After changing the password, you will be logged out",
+        icon: "info",
+        showCancelButton: true,
+        confirmButtonText: "Change Password"
+      }).then((result) => {
+        if (result.isConfirmed) {
+          this.changePassword()
+        }
+      });
+    } else {
+      this.passwordFormSubmitted = true
+    }
+  }
+
+  changePassword() {
     this.passwordFormSubmitted = true
     if (this.passwordForm.valid) {
-      const { value } = this.passwordForm
-      this.userService.changePassword(value).subscribe( response => {
-        this.showNotification({ message: 'Success! Your changes have been saved.', type: 0 });
-        // TODO: avisar que se te deslogueara LOGOUT
-        this.authService.logOut()
-        this.router.navigate(['/auth'])
-      }, error => {
-        console.log(error)
-        this.showNotification({ message: 'Failed to complete the operation. Please try again.', type: 1});
-        this.errorUser = true
-      })
+          const { value } = this.passwordForm
+          this.userService.changePassword(value).subscribe( response => {
+            this.showNotification({ message: 'Success! Your changes have been saved.', type: 0 });
+            // TODO: avisar que se te deslogueara LOGOUT
+            this.authService.logOut()
+            this.router.navigate(['/auth'])
+          }, error => {
+            console.log(error)
+            this.showNotification({ message: 'Failed to complete the operation. Please try again.', type: 1});
+            this.errorUser = true
+          })
     }
   }
 

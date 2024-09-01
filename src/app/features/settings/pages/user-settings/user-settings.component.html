@@ -28,7 +28,7 @@
         <input formControlName="newPassword" type="password" placeholder="New Password" [ngClass]="{'is-valid': passwordFormSubmitted && lfPassword['newPassword'].errors == null,
                 'is-invalid': passwordFormSubmitted && lfPassword['newPassword'].errors != null}">
       </div>
-      <button (click)="savePasword()" class="w-full my-3">Change Password</button>
+      <button [ngClass]="{'disabled': lfPassword['newPassword'].value.length <= 0 || lfPassword['oldPassword'].value.length <= 0}" (click)="savePasword()" class="w-full my-3">Change Password</button>
     </form>
 </div>
 

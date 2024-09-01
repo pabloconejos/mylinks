@@ -119,3 +119,21 @@ textarea {
     color: red;
     border: 1px solid red;
 }
+
+
+.swal2-cancel, .swal2-styledl {
+    background-color: transparent;
+    color: var(--primary-pink);
+    border-color: var(--primary-pink);
+    transition: text-decoration 0.2s ease-in-out;
+}
+
+.swal2-cancel:hover, .swal2-styledl:hover {
+    cursor: pointer;
+    text-decoration: underline;
+    background-color: transparent;
+}
+
+.swal2-confirm {
+    background-color: var(--primary-pink) !important
+}
