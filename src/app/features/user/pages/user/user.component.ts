@@ -41,7 +41,6 @@ export class UserComponent {
     this.user = this.userService.setUser(user)
     this.page = this.pageService.setPage(this.user)
     this.getLinks()
-    console.log(this.page)
   }
 
   getLinks() {
