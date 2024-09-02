@@ -29,7 +29,7 @@ export class LinksService {
     return this.http.patch<{link: Link}>(`${this.URI}links/link`,{link}, { withCredentials: true })
   }
 
-  getLinks() {
-    return this.http.get<Link[]>(this.URI+'links/links' ,{ withCredentials: true })
+  getLinks(user: string) {
+    return this.http.get<Link[]>(`${this.URI}links/${user}` ,{ withCredentials: true })
   }
 }

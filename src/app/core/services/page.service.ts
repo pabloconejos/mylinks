@@ -49,5 +49,9 @@ export class PageService {
   updatePage(data: UpdatePage) {
     return this.http.patch<{pageId : string}>(this.URI + 'update', {data}, { withCredentials: true });
   }
+
+  like(pageId: string, likeCount: number) {
+    return this.http.patch<{pageId : string}>(this.URI + 'like', {pageId, likeCount});
+  }
   
 }

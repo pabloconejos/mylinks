@@ -1,7 +1,7 @@
+import { AddLinkModalComponent } from '@/app/features/admin/components/add-link-modal/add-link-modal.component';
 import { Link, LinkImage, LinkResult } from '@/app/interfaces';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { AddLinkModalComponent } from '../add-link-modal/add-link-modal.component';
 
 @Component({
   selector: 'app-link',
@@ -16,6 +16,9 @@ export class LinkComponent {
   linksImages!: LinkImage[]
   @Output() 
   linkEvent = new EventEmitter<LinkResult>();
+
+  @Input()
+  ownPage: boolean = true
 
   private dialogRef: any;
 

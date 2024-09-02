@@ -54,7 +54,7 @@ export class AdminComponent implements OnInit{
   }
 
   getLinks() {
-    this.linksService.getLinks().subscribe( (l: Link[]) => {
+    this.linksService.getLinks(this.userService.user.id).subscribe( (l: Link[]) => {
       this.links = l
     })
   }

@@ -10,7 +10,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '@/app/shared/shared.module';
 import { AddLinkModalComponent } from './components/add-link-modal/add-link-modal.component';
 import { MAT_DIALOG_DEFAULT_OPTIONS, MatDialogModule } from '@angular/material/dialog';
-import { LinkComponent } from './components/link/link.component';
 import { HavePageGuard, HaveToCreatePageGuard } from '@/app/core/guards/index';
 
 const routes: Routes = [
@@ -44,7 +43,6 @@ const routes: Routes = [
     PageStartConfigComponent,
     EmojiPickerComponent,
     AddLinkModalComponent,
-    LinkComponent
   ],
   imports: [
     CommonModule,
