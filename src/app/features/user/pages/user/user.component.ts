@@ -30,6 +30,7 @@ export class UserComponent {
     private linksService: LinksService
   ) 
   {
+    // TODO HACER ALGO CUANDO NO SE ENCUENTRE EL USER
     const { username } = this.activatedRoute.snapshot.params
     this.userService.getUser(username, true).subscribe( user => {
       this.inicializarVariables(user[0])
@@ -56,8 +57,9 @@ export class UserComponent {
       this.page.likes += 1
       this.isDisabled = false
     }, error => {
+      // TODO : ARREGLAR MENSAJE EN LA NOTI
       this.isDisabled = true
-      this.showNotification({ message: 'To many likes', type: 3});
+      this.showNotification({ message: 'To many likes', type: 2});
     })
   }
 

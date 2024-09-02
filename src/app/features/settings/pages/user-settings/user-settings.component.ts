@@ -75,7 +75,7 @@ export class UserSettingsComponent implements OnInit{
         this.userService.user.username = value.username
         this.showNotification({ message: 'Success! Your changes have been saved.', type: 0 });
       }, error => {
-        this.showNotification({ message: 'Failed to complete the operation. Please try again.', type: 1});
+        this.showNotification({ message: error.error, type: 1});
         this.errorUser = true
       })
     }

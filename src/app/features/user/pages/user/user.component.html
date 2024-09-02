@@ -17,8 +17,8 @@
         </div>
         
         <div class="info-user-header">
-            <h1 class="font-semibold text-3xl mx-10"><span>&#64;</span>{{user.username}}</h1>
-            <div class="flex gap-2 mx-10">
+            <h1 [style.color]="page.mainColor" class="font-semibold text-3xl"><span>&#64;</span>{{user.username}}</h1>
+            <div class="flex gap-2">
                 <img (click)="copyProfile()" src="assets/svg/share.svg" alt="Share Icon">
                 <p>Share</p>
             </div>
@@ -28,7 +28,7 @@
             <div class="name-page">
                 <h1 [style.color]="page.mainColor" class="page-title font-semibold text-3xl">{{page.title}}</h1>
                 <div [ngStyle]="{'pointer-events': !isDisabled ? 'all' : 'none'}" (click)="like()" class="likes">
-                    <svg [attr.fill]="!isDisabled ? activeColor : inactiveColor" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="icon icon-tabler icons-tabler-filled icon-tabler-heart">
+                    <svg  [attr.fill]="!isDisabled ? activeColor : inactiveColor" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="icon icon-tabler icons-tabler-filled icon-tabler-heart">
                         <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                         <path d="M6.979 3.074a6 6 0 0 1 4.988 1.425l.037 .033l.034 -.03a6 6 0 0 1 4.733 -1.44l.246 .036a6 6 0 0 1 3.364 10.008l-.18 .185l-.048 .041l-7.45 7.379a1 1 0 0 1 -1.313 .082l-.094 -.082l-7.493 -7.422a6 6 0 0 1 3.176 -10.215z" />
                       </svg>
@@ -39,8 +39,8 @@
                 <app-link [ownPage]="false" [link]="link"></app-link>
             }
             <div class="share-link">
-                <img src="assets/svg/share.svg" alt="Share Icon">
-                <span (click)="copyProfile()" class="link-text font-semibold">Share Profile</span>
+                <img [style.color]="page.mainColor" src="assets/svg/share.svg" alt="Share Icon">
+                <p (click)="copyProfile()" class="link-text font-semibold" [style.color]="page.mainColor">Share Profile</p>
             </div>
 
         </div>
