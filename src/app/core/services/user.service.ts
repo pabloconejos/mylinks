@@ -18,17 +18,24 @@ export class UserService {
 
 
 
-  getUser() {
+  getUserLogged() {
     return this.http.get<userDataBase>(this.URI+'auth/user', { withCredentials: true });
   }
 
-  setUser(user: userDataBase) {
-    // console.log(user)
+  getUser(user: string, exact: boolean) {
+    return this.http.get<userDataBase[]>(`${this.URI}user/${user}`, {
+      params: {
+        exact: exact.toString()
+      }
+    });
+  }
+  
+
+  setUser(user: userDataBase): User {
     try {
       const {background_color, background_emoji, background_html_id, bg_mode, creation_date, description, likes, mail, page_id, title, user_id, username, css_real_bg, mainColor, secondaryColor} = user
       const creationDate: Date = new Date(creation_date);
-      // console.log(bg_mode)
-      this.user = new User(
+      return new User(
         user_id,
         username,
         mail,
@@ -48,9 +55,8 @@ export class UserService {
           secondaryColor
         )
       )
-      return true
     } catch (e) {
-      return e
+      throw new Error(`Failed to set user`);
     }
   }
 

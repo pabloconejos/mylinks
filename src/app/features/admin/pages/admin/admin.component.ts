@@ -26,8 +26,8 @@ export class AdminComponent implements OnInit{
     public linksService: LinksService
 
   ) {
-    this.userService.getUser().subscribe( user => {
-      this.userService.setUser(user)
+    this.userService.getUserLogged().subscribe( user => {
+      this.userService.user = this.userService.setUser(user)
       this.inicializarVariables()
       this.getLinks()  
     })
@@ -60,7 +60,7 @@ export class AdminComponent implements OnInit{
   }
 
   inicializarVariables() {
-    this.pageService.setPage(this.userService.user)
+    this.pageService.page = this.pageService.setPage(this.userService.user)
     this.page = this.pageService.page
   }
 

@@ -20,9 +20,8 @@ export class PageService {
   { }
 
 
-  setPage(user: User) {
-    console.log(user)
-    this.page = new Page(
+  setPage(user: User): Page {
+    return new Page(
       user.page.id,
       user.page.user_id,
       user.page.title,

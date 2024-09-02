@@ -24,9 +24,9 @@ export class SettingsLayaoutComponent implements OnInit{
   }
 
   getUser() {
-    this.userService.getUser().subscribe( user => {
-      this.userService.setUser(user)
-      this.pageService.setPage(this.userService.user)
+    this.userService.getUserLogged().subscribe( user => {
+      this.userService.user = this.userService.setUser(user)
+      this.pageService.page = this.pageService.setPage(this.userService.user)
     })
   }
 }
