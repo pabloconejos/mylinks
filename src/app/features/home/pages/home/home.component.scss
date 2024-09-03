@@ -1,0 +1,284 @@
+.page-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+}
+
+.text-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 16px;
+    line-height: 0.8; /* Ajusta el espaciado entre las líneas, puedes probar con diferentes valores */
+    z-index: 2;
+}
+
+.main-title{
+    font-weight: bold; 
+    font-size: 100px;
+    color: var(--primary-pink);
+    margin: 16px;
+}
+
+  
+@mixin gradient-text($gradient, $bg : 'light') {
+    @supports(mix-blend-mode: lighten) {
+      display: inline-block;
+      position: relative;
+      
+    &::before {
+        content: '';
+        display: block;
+        position: absolute;
+        top: 0; right: 0; bottom: 0; left: 0;
+        
+        background: unquote($gradient);
+        pointer-events: none;
+    }
+  
+    color: #000;
+    background: #fff;
+    mix-blend-mode: multiply;
+  
+    &::before {
+        mix-blend-mode: screen;
+    }
+     
+    }
+  }
+
+.main-title {
+    font-weight: bold;
+    color: #FF69B4; // Color base
+    // @include gradient-text('linear-gradient(to right, #FF69B4, #FF82A9, #FF99B7, #FF69B4)', 'light');
+}
+
+
+/* LINK FAKE 1 */
+
+.link {
+    background-color: white;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    transition: scale 0.5s ease-in-out;
+    box-shadow: 0 14px 28px rgba(147, 138, 138, 0.25), 
+            0 10px 10px rgba(0,0,0,0.22);
+    
+    padding: 20px;
+}
+  
+.fake-photo {
+    width: 40px;
+    height: 40px;
+    aspect-ratio: 1/1;
+    background-color: #e6e6e6;
+    border-radius: 100px;
+}
+
+.text-fake-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+    gap: 1px;
+    margin: 16px;
+}
+
+.fake-title {
+    background-color: #e6e6e6;
+    width: 120px;
+    height: 10px;
+    border-radius:10px
+}
+.fake-subtitle {
+    background-color: #e6e6e6;
+    width: 90px;
+    height: 10px;
+    border-radius:10px
+}
+
+.link-1 .fake-tool-section {
+    display: flex;
+    justify-items: space-between;
+    align-items: center;
+    gap: 16px;
+}
+  
+.fake-tool {
+    width: 40px;
+    height: 40px;
+    aspect-ratio: 1/1;
+    background-color: #e6e6e6;
+    border-radius: 100px;
+}
+
+.link-1 .fake-tool, .link-4 .fake-tool {
+    background-size: cover; /* Ajusta el tamaño de la imagen para cubrir todo el elemento */
+    background-position: center; /* Centra la imagen en el elemento */
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
+    background-size: 20px 20px; /* Ajusta el tamaño del fondo */
+}
+
+.link-1 .fake-tool:first-child {
+    background-image: url('../../../../../assets/svg/share.svg'); /* Ruta de la imagen */
+}
+
+.link-1 .fake-tool:nth-child(2) {
+    background-image: url('../../../../../assets/svg/pencil.svg'); /* Ruta de la imagen */
+}
+
+.link-1 .fake-tool:last-child {
+    background-image: url('../../../../../assets/svg/trash.svg'); /* Ruta de la imagen */
+}
+
+.link-1 {
+    position: fixed;
+    rotate: -10deg;
+    top: 250px;
+    left: -40px;
+}
+
+/* LINK FAKE 2 */
+
+.link-2 {
+    padding: 10px;
+    position: fixed;
+    rotate: 10deg;
+    top: 350px;
+    left: -40px;
+}
+
+.fake-card {
+    width: 300px;
+    height: 150px;
+    background-color: #e6e6e6;
+    border-radius: inherit;
+    display: flex;
+    justify-content: end;
+}
+
+.link-2 .fake-card .fake-tool {
+    background-image: url('../../../../../assets/svg/link.svg'); /* Ruta de la imagen */
+    background-color: white;
+    margin: 10px;
+    background-size: cover; /* Ajusta el tamaño de la imagen para cubrir todo el elemento */
+    background-position: center; /* Centra la imagen en el elemento */
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
+    background-size: 20px 20px; /* Ajusta el tamaño del fondo */
+}
+
+
+/* Link fake 3 */
+.link-3 {
+    width: 200px;
+    height: 300px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+    gap: 16px;
+    position: fixed;
+    rotate: -10deg;
+    top: 450px;
+    left: -40px;
+}
+
+.link-3 .text-fake-section {
+    padding: 0;
+    margin: 0;
+    
+}
+
+.fake-square-section {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    width: 100%;
+    height: 100vh; /* Asegúrate de que el contenedor tenga suficiente altura */
+    gap: 6px;
+    justify-content: center; /* Centra el grid horizontalmente */
+    align-content: center; /* Centra el grid verticalmente */
+}
+
+.fake-square {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+    border-radius: 10px;
+    background-color: #e6e6e6;
+}
+
+
+/* LINK FAKE 4 */
+.link-4 {
+    position: fixed;
+    rotate: 8deg;
+    top: 450px;
+    right: -80px;
+}
+
+.link-4 .fake-tool-section {
+    display: flex;
+    justify-items: space-between;
+    align-items: center;
+    gap: 16px;
+}
+
+.link-4 .fake-tool:first-child {
+    background-image: url('../../../../../assets/svg/share.svg'); /* Ruta de la imagen */
+}
+
+.link-4 .fake-tool:nth-child(2) {
+    background-image: url('../../../../../assets/svg/pencil.svg'); /* Ruta de la imagen */
+}
+
+.link-4 .fake-tool:last-child {
+    background-image: url('../../../../../assets/svg/trash.svg'); /* Ruta de la imagen */
+}
+
+/* LINK FAKE 5 */
+.link-5 {
+    width: 200px;
+    height: 300px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+    gap: 16px;
+    position: fixed;
+    rotate: -10deg;
+    top: 250px;
+    right: -40px;
+    z-index: -1;
+}
+
+/* LINK FAKE 6 */
+.link-6 {
+    width: 300px;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    rotate: -10deg;
+    top: 550px;
+    right: -40px;
+    z-index: -1;
+}
+
+.fake-section {
+    margin-top: 10px;
+    width: 100%;
+    height: 100%;
+    background-color: #e6e6e6;
+    border-radius: 10px
+}
+
+

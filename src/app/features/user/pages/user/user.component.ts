@@ -2,8 +2,8 @@ import { UserService } from '@/app/core/services/user.service';
 import { Page } from '@/app/interfaces/Page';
 import { User, userDataBase } from '@/app/interfaces/User';
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { PageService } from '../../../../core/services/page.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { PageService } from '@/app/core/services/page.service';
 import { LinksService } from '@/app/core/services/links.service';
 import { Link } from '@/app/interfaces';
 import { Notification } from '@/app/interfaces';
@@ -27,13 +27,16 @@ export class UserComponent {
     private activatedRoute: ActivatedRoute,
     private userService: UserService,
     private pageService: PageService,
-    private linksService: LinksService
+    private linksService: LinksService,
+    private router: Router
   ) 
   {
-    // TODO HACER ALGO CUANDO NO SE ENCUENTRE EL USER
     const { username } = this.activatedRoute.snapshot.params
     this.userService.getUser(username, true).subscribe( user => {
       this.inicializarVariables(user[0])
+    }, error => {
+      console.log(error)
+      this.router.navigate(['/'])
     })
   }
 
