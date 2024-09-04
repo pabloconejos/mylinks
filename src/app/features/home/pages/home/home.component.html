@@ -3,10 +3,17 @@
         <div class="absolute inset-0 -z-10 h-full w-full bg-white bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:14px_24px]"><div class="absolute left-0 right-0 top-0 -z-10 m-auto h-[310px] w-[310px] rounded-full bg-fuchsia-400 opacity-20 blur-[100px]"></div></div>
     </div>
 </div>
-<div class="page-container">
+<div class="home-page-section">
+    <div class="main-page-container w-screen h-screen">
         <section class="text-section">
             <h1 class="main-title">WELCOME TO</h1>
-            <h1 class="main-title">MY LINKS</h1>
+            <h1 class="main-title main-title2">MY LINKS</h1>
+            <button class="my-10 text-lg">Create an account</button>
+            <div class="sub-title">
+                <p>Scrool down to search pages</p>
+                <img src="assets/svg/arrow.svg" alt="">
+            </div>
+            
         </section>
     
         <div class="link link-1">
@@ -73,5 +80,22 @@
             </div>
             <div class="fake-section"></div>
         </div>
-</div>
+    </div>
 
+    <div class="buscador-section w-screen h-screen">
+        
+        <form class="form w-[800px]">   
+            <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only">Search</label>
+            <div class="relative">
+                <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                    <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+                    </svg>
+                </div>
+                <input type="search" id="default-search" class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500" placeholder="Search Mockups, Logos..." required />
+            </div>
+        </form>
+
+    </div>
+
+</div>
