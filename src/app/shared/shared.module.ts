@@ -6,15 +6,16 @@ import { SelectBackgroundComponent } from './backgrounds/select-background/selec
 import { RouterModule } from '@angular/router';
 import { NotificationComponent } from './notification/notification.component';
 import { LinkComponent } from './link/link.component';
+import { FooterComponent } from './footer/footer.component';
 
 
 
 @NgModule({
-  declarations: [LoaderComponent, HeaderComponent, SelectBackgroundComponent, NotificationComponent, LinkComponent],
+  declarations: [LoaderComponent, HeaderComponent, SelectBackgroundComponent, NotificationComponent, LinkComponent, FooterComponent],
   imports: [
     CommonModule,
     RouterModule
   ],
-  exports: [LoaderComponent, HeaderComponent, SelectBackgroundComponent, NotificationComponent, LinkComponent]
+  exports: [LoaderComponent, HeaderComponent, SelectBackgroundComponent, NotificationComponent, LinkComponent, FooterComponent]
 })
 export class SharedModule { }

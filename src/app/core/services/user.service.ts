@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { User, userDataBase } from '../../interfaces/User';
+import { User, UserDataBase } from '../../interfaces/User';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
 import { Page } from '../../interfaces/index';
@@ -19,11 +19,11 @@ export class UserService {
 
 
   getUserLogged() {
-    return this.http.get<userDataBase>(this.URI+'auth/user', { withCredentials: true });
+    return this.http.get<UserDataBase>(this.URI+'auth/user', { withCredentials: true });
   }
 
-  getUser(user: string, exact: boolean) {
-    return this.http.get<userDataBase[]>(`${this.URI}user/${user}`, {
+  getUser(user: string = '', exact: boolean = false) {
+    return this.http.get<UserDataBase[]>(`${this.URI}user/${user}`, {
       params: {
         exact: exact.toString()
       }
@@ -31,7 +31,7 @@ export class UserService {
   }
   
 
-  setUser(user: userDataBase): User {
+  setUser(user: UserDataBase): User {
     try {
       const {background_color, background_emoji, background_html_id, bg_mode, creation_date, description, likes, mail, page_id, title, user_id, username, css_real_bg, mainColor, secondaryColor} = user
       const creationDate: Date = new Date(creation_date);
@@ -61,7 +61,7 @@ export class UserService {
   }
 
   updateUser(userData: {username: string, mail: string}) {
-    return this.http.patch<userDataBase>(this.URI+'user/update', {userData} , { withCredentials: true })
+    return this.http.patch<UserDataBase>(this.URI+'user/update', {userData} , { withCredentials: true })
   }
 
   changePassword(password: {newPassword: string, oldPassword: string}) {

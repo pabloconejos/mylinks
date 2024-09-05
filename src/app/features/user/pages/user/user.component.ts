@@ -1,6 +1,6 @@
 import { UserService } from '@/app/core/services/user.service';
 import { Page } from '@/app/interfaces/Page';
-import { User, userDataBase } from '@/app/interfaces/User';
+import { User, UserDataBase } from '@/app/interfaces/User';
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PageService } from '@/app/core/services/page.service';
@@ -41,7 +41,7 @@ export class UserComponent {
   }
 
 
-  inicializarVariables(user: userDataBase) {
+  inicializarVariables(user: UserDataBase) {
     this.user = this.userService.setUser(user)
     this.page = this.pageService.setPage(this.user)
     this.getLinks()

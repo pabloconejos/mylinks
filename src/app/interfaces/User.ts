@@ -44,7 +44,7 @@ export interface checkAuth {
 }
 
 
-export interface userDataBase {
+export interface UserDataBase {
     user_id: string
     username: string
     mail: string
@@ -63,3 +63,30 @@ export interface userDataBase {
 }
 
   
+/*background_color
+
+background_emoji
+
+background_html_id
+
+bg_mode
+
+css_real_bg
+
+description
+
+likes
+
+mail
+
+mainColor
+
+page_id
+
+secondaryColor
+
+title
+
+user_id
+
+username*/

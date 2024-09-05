@@ -13,6 +13,7 @@ export interface Page {
     css_real_bg: string;
     mainColor: string;
     secondaryColor: string,
+    username?: string;
     links: Link[]; // Aquí se utiliza links en lugar de _links
 }
 

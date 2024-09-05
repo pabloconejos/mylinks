@@ -83,19 +83,54 @@
     </div>
 
     <div class="buscador-section w-screen h-screen">
-        
-        <form class="form w-[800px]">   
-            <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only">Search</label>
-            <div class="relative">
-                <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-                    <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
-                    </svg>
+        <div class="accounts-section">
+            <h1 class="form-title">Shearch</h1>
+            <form class="form w-full">   
+                <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only">Search</label>
+                <div class="relative">
+                    <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                        <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+                        </svg>
+                    </div>
+                    <input type="search" id="default-search" [(ngModel)]="username" [ngModelOptions]="{standalone: true}" (ngModelChange)="searchPage()"
+                     class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500" 
+                     placeholder="Search pages..." required />
                 </div>
-                <input type="search" id="default-search" class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500" placeholder="Search Mockups, Logos..." required />
-            </div>
-        </form>
+            </form>
+    
+            <div *ngIf="true" class="recomended-accounts">
+                @for (user of users; track $index) {
+                    <article class="account my-8">
+                        <div [class]="'absolute inset-0 -z-10 h-full w-full bg-white bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px]'"></div>
 
+                        <div class="account-content">
+                            <div class="title">
+                                <div class="flex flex-col gap-1">
+                                    <h1>{{user.title}}</h1>
+                                    <p><span>&#64;</span>{{user.username}}</p>
+                                </div>
+                                <div class="likes">
+                                    <img src="assets/svg/heart.svg" alt="">
+                                    <p>{{user.likes}}</p>
+                                </div>
+                            </div>
+                            <p class="description py-4">{{user.description}}</p>
+                        </div>
+                        <div class="share-section">
+                            <img [routerLink]="'/user/'+user.username" src="assets/svg/share.svg" alt="">
+                        </div>
+                    </article>
+                }
+
+                @if (isSearching) {
+                    <div class="account my-8 skeleton w-full"></div>
+                }
+            </div>
+        </div>
+    
     </div>
+
+    <app-footer></app-footer>
 
 </div>
