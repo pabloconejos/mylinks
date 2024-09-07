@@ -17,7 +17,7 @@
                 </div>
         </div>
             
-        <div class="info-user-header">
+        <div class="info-user-header my-14">
                 <h1 [style.color]="page.mainColor" class="font-semibold text-3xl"><span>&#64;</span>{{user.username}}</h1>
                 <div class="flex gap-2">
                     <img (click)="copyProfile()" src="assets/svg/share.svg" alt="Share Icon">
@@ -25,7 +25,7 @@
                 </div>
         </div>
     
-        <div class="links-section my-10">
+        <div class="links-section">
                 <div class="name-page">
                     <h1 [style.color]="page.mainColor" class="page-title font-semibold text-3xl">{{page.title}}</h1>
                     <div [ngStyle]="{'pointer-events': !isDisabled ? 'all' : 'none'}" (click)="like()" class="likes">
