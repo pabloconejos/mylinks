@@ -456,6 +456,8 @@
     .form-title {
         font-size: 40px;
     }
+
+    
 }
 
 /* Para pantallas de tamaño mediano, como laptops */
@@ -473,6 +475,7 @@
     .form-title {
         font-size: 35px;
     }
+    
 }
 
 /* Para tablets en orientación horizontal */
@@ -550,11 +553,19 @@
     .link-6 {
         
     }
+
+    .description {
+        font-size: 14px;
+    }
 }
 
 /* Para dispositivos móviles pequeños */
 @media (max-width: 400px) {
     .main-title {
         font-size: 40px;
+    }
+
+    .description {
+        font-size: 14px;
     }
 }
