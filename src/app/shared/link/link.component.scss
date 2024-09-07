@@ -3,7 +3,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: scale 0.5s ease-in-out;
+    transition: scale 0.5s ease-in-out, transform 0.1s ease-in-out;
     box-shadow: 0 14px 28px rgba(147, 138, 138, 0.25), 
             0 10px 10px rgba(0,0,0,0.22);
     scale: 1;
@@ -13,6 +13,8 @@
     @starting-style {
         scale: 0
     }
+
+    
 }
 
 .link {
@@ -57,6 +59,10 @@ img {
 
 .icon:hover {
     background-color: rgba(192, 192, 192, 0.499);
+}
+
+:host:hover {
+    transform: scale(1.02);
 }
 
 /* Pantallas grandes (Desktop) */

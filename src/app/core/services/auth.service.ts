@@ -34,7 +34,7 @@ export class AuthService {
   }
 
   logOut() {
-    return this.http.get<{ message: string }>(this.URI+'auth/logout', { withCredentials: true })
+    return this.http.post<{ message: string }>(this.URI + 'auth/logout', {}, { withCredentials: true });
   }
 
 }

@@ -2,6 +2,7 @@ import { PageService } from '@/app/core/services/page.service';
 import { UserService } from '@/app/core/services/user.service';
 import { UserDataBase } from '@/app/interfaces';
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -15,8 +16,8 @@ export class HomeComponent {
   isSearching: boolean = false
 
   constructor(
-    private pageService: PageService,
-    private userService: UserService
+    private userService: UserService,
+    private router: Router
   ) {
     this.userService.getUser().subscribe( users => {
       console.log(users)
@@ -31,6 +32,10 @@ export class HomeComponent {
     this.userService.getUser(this.username).subscribe( users => {
       this.users = users
     })
+  }
+
+  createAccount() {
+    this.router.navigate(['/admin'])
   }
 
 

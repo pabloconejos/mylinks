@@ -1,14 +1,7 @@
 <section class="w-full header backdrop-blur-sm">
-    <div class="logo-section">
+    <div [routerLink]="'/'" class="logo-section cursor-pointer">
         <img src="assets/svg/link.svg" alt="myLinks logo">
-        <h1 routerLink="'/'" class="text-center">MyLinks</h1>
-    </div>
-    
-    <div class="main-section">
-        <!--<ul>
-            <li><a class="text-black">Home</a></li>
-            <li><a class="text-black">My Links</a></li>
-        </ul>-->
+        <h1  class="text-center">MyLinks</h1>
     </div>
 
     <div class="useer-section m-3 relative">
@@ -16,15 +9,20 @@
         @if (isMenuOpen) {
           <div id="dropdown" class="dropdown-menu z-10 bg-white divide-y divide-gray-100 rounded-lg shadow w-44">
             <ul class="py-2 text-sm text-gray-200" aria-labelledby="dropdownDefaultButton">
-              <li> <!-- solo en pantallas pequeñas -->
+              <li>
                 <a routerLink="/" class="block px-4 py-2 hover:bg-gray-100">Home</a>
               </li>
-              <li> <!-- solo en pantallas pequeñas -->
+              <li>
                 <a routerLink="/admin" class="block px-4 py-2 hover:bg-gray-100">Links</a>
               </li>
-              <li>
-                <a routerLink="/admin/settings" class="block px-4 py-2 hover:bg-gray-100">Settings</a>
-              </li>
+              @if (isLooged) {
+                <li>
+                  <a routerLink="/admin/settings" class="block px-4 py-2 hover:bg-gray-100">Settings</a>
+                </li>
+                <li>
+                  <a (click)="logOut()" class="block px-4 py-2 hover:bg-gray-100">Log Out</a>
+                </li>
+              }
               <li>
                 <a href="" class="block px-4 py-2 hover:bg-gray-100">Social Media</a>
               </li>

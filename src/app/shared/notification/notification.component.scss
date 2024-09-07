@@ -5,6 +5,7 @@
     margin: 20px;
     opacity: 1;
     transition: opacity 0.2s ease-in-out, display .2s ease;
+    z-index: 9999;
 
     @starting-style {
         opacity: 0;

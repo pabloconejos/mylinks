@@ -3,12 +3,13 @@
         <div class="absolute inset-0 -z-10 h-full w-full bg-white bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:14px_24px]"><div class="absolute left-0 right-0 top-0 -z-10 m-auto h-[310px] w-[310px] rounded-full bg-fuchsia-400 opacity-20 blur-[100px]"></div></div>
     </div>
 </div>
+<app-header></app-header>
 <div class="home-page-section">
     <div class="main-page-container w-screen h-screen">
         <section class="text-section">
             <h1 class="main-title">WELCOME TO</h1>
             <h1 class="main-title main-title2">MY LINKS</h1>
-            <button class="my-10 text-lg">Create an account</button>
+            <button (click)="createAccount()" class="my-10 text-lg">Create an account</button>
             <div class="sub-title">
                 <p>Scrool down to search pages</p>
                 <img src="assets/svg/arrow.svg" alt="">
@@ -82,7 +83,7 @@
         </div>
     </div>
 
-    <div class="buscador-section w-screen h-screen">
+    <div class="buscador-section">
         <div class="accounts-section">
             <h1 class="form-title">Shearch</h1>
             <form class="form w-full">   
@@ -101,7 +102,7 @@
     
             <div *ngIf="true" class="recomended-accounts">
                 @for (user of users; track $index) {
-                    <article class="account my-8">
+                    <article [routerLink]="'/user/'+user.username" rou class="account my-8">
                         <div [class]="'absolute inset-0 -z-10 h-full w-full bg-white bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px]'"></div>
 
                         <div class="account-content">
