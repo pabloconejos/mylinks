@@ -419,6 +419,21 @@
     animation-range: 0 70vh
 }
 
+@-webkit-keyframes fake-links-move-right {
+    to {
+        top: 0;
+        right: -400px;
+        // transform: rotate(45deg) scale(0.8);
+    }
+}
+
+@-webkit-keyframes fake-links-move-lef {
+    to {
+        top: 0;
+        left: -400px;
+        // transform: rotate(-45deg) scale(0.8);
+    }
+}
 
 @keyframes fake-links-move-right {
     to {
