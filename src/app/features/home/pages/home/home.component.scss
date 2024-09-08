@@ -419,19 +419,36 @@
     animation-range: 0 70vh
 }
 
+
 @-webkit-keyframes fake-links-move-right {
     to {
         top: 0;
         right: -400px;
-        // transform: rotate(45deg) scale(0.8);
+        /* transform: rotate(45deg) scale(0.8); */
     }
 }
 
-@-webkit-keyframes fake-links-move-lef {
+@-webkit-keyframes fake-links-move-left {
     to {
         top: 0;
         left: -400px;
-        // transform: rotate(-45deg) scale(0.8);
+        /* transform: rotate(-45deg) scale(0.8); */
+    }
+}
+
+@-moz-keyframes fake-links-move-right {
+    to {
+        top: 0;
+        right: -400px;
+        /* transform: rotate(45deg) scale(0.8); */
+    }
+}
+
+@-moz-keyframes fake-links-move-left {
+    to {
+        top: 0;
+        left: -400px;
+        /* transform: rotate(-45deg) scale(0.8); */
     }
 }
 
@@ -439,7 +456,7 @@
     to {
         top: 0;
         right: -400px;
-        // transform: rotate(45deg) scale(0.8);
+        /* transform: rotate(45deg) scale(0.8); */
     }
 }
 
@@ -447,7 +464,7 @@
     to {
         top: 0;
         left: -400px;
-        // transform: rotate(-45deg) scale(0.8);
+        /* transform: rotate(-45deg) scale(0.8); */
     }
 }
 
