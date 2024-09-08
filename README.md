@@ -38,7 +38,7 @@ Existen aplicaciones similares ya en el mercado, como Linktree, que ofrecen func
 
 3. **Configura el Backend**
 
-  Asegúrate de seguir las instrucciones específicas del backend para su configuración, como la creación de variables de entorno o la configuración de la base de datos.
-  ```bash
-  https://github.com/pabloconejos/mylinks_back
+    Asegúrate de seguir las instrucciones específicas del backend para su configuración, como la creación de variables de entorno o la configuración de la base de datos.
+    ```bash
+    https://github.com/pabloconejos/mylinks_back
 
