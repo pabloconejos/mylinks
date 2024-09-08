@@ -411,20 +411,12 @@
     animation: fake-links-move-right linear both;
     animation-timeline: scroll(root block);
     animation-range: 0 70vh;
-    -webkit-animation: fake-links-move-right linear both;
-    -webkit-animation-timeline: scroll(root block);
-    -webkit-animation-range: 0 70vh;  
-   
 }
 
 .link-1, .link-2, .link-3 {
     animation: fake-links-move-left linear both;
     animation-timeline: scroll(root block);
     animation-range: 0 70vh;  
-    -webkit-animation: fake-links-move-left linear both;
-    -webkit-animation-timeline: scroll(root block);
-    -webkit-animation-range: 0 70vh;  
-  
 }
 
 
