@@ -1,6 +1,6 @@
 export const environment = {
     production: false,
-    apiUrl: 'http://localhost:1234/',
+    apiUrl: 'https://mylinks-back.vercel.app/',
     // Otras configuraciones específicas para desarrollo
   };
   
