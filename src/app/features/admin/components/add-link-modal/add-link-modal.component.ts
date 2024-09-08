@@ -60,7 +60,6 @@ export class AddLinkModalComponent implements OnInit {
   }
 
   closeModal() {
-    console.log('closeModal')
     this.dialogRef.close({link: null, action: 'close'});
   }
 
@@ -72,7 +71,6 @@ export class AddLinkModalComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log('hola')
     this.linkFormSubmited = true
     const url = this.linkForm.get('linkUrl')!.value;
 

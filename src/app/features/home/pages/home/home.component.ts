@@ -20,7 +20,6 @@ export class HomeComponent {
     private router: Router
   ) {
     this.userService.getUser().subscribe( users => {
-      console.log(users)
       this.users = users
     }, error => {
       console.log(error)

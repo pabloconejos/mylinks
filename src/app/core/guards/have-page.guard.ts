@@ -15,7 +15,6 @@ export class HavePageGuard implements CanActivate {
   ): Observable<boolean> {
     return this.pageService.havePage().pipe(
       map(response => {
-        console.log(response.page)
         if (response.page) {
           this.router.navigate(['/admin']);
           return false;

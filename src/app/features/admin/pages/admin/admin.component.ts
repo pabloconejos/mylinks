@@ -87,9 +87,7 @@ export class AdminComponent implements OnInit{
   }
 
   editLink(link: Link) {
-    console.log(link)
     this.linksService.editLink(link).subscribe( r => {
-      console.log(r)
       this.getLinks()
     })
   }

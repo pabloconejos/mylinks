@@ -43,7 +43,6 @@ export class LinkComponent {
       if(link) {
         this.linkEvent.emit(linkRes)
       } else {
-        console.log('Closed without actions!')
       }
       
     });

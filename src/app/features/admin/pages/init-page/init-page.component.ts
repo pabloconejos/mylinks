@@ -18,7 +18,6 @@ export class InitPageComponent {
     this.pageService.createPage().subscribe( r => {
       
       if(r.pageId) {
-        console.log(r)
         this.router.navigate(['admin/create/start'])
       }
     }, error => {

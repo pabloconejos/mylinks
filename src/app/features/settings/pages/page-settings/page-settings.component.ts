@@ -48,7 +48,6 @@ export class PageSettingsComponent implements OnInit{
   }
 
   selectBg(id: number) {
-    console.log(id)
     this.selectedBg = id
   }
 
@@ -56,7 +55,6 @@ export class PageSettingsComponent implements OnInit{
     this.pageFormSubmitted = true;
     const { value } = this.pageForm
     value.cssBg = this.selectedBg
-    console.log(value.secondaryColor)
     if( this.pageForm.valid ) {
       this.pageService.updatePage(value).subscribe( response => {
         if(response.pageId) {

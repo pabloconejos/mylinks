@@ -73,7 +73,6 @@ export class PageStartConfigComponent implements AfterViewInit, OnInit{
       
       this.bgService.getBackgrounds().subscribe( bg => {
         this.backgrounds = bg.data
-        //console.log(this.backgrounds)
       })
 
   }
