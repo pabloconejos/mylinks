@@ -42,3 +42,23 @@ Existen aplicaciones similares ya en el mercado, como Linktree, que ofrecen func
     ```bash
     https://github.com/pabloconejos/mylinks_back
 
+## Contribuye con Cambios
+
+Para contribuir al proyecto, sigue estos pasos:
+
+1. **Crea una rama para tus cambios:**
+
+   ```bash
+   git checkout -b mi-rama
+   
+2. **Realiza tus modificaciones y haz commit:**
+
+    ```bash
+    git commit -am 'Descripción de los cambios'
+3. **Envía tus cambios a GitHub:**
+
+    ```bash
+    git push origin mi-rama
+    
+4. **Abre un pull request para revisar tus cambios.**
+
