@@ -1,23 +1,22 @@
-<a [href]="link.linkUrl">
-    <div class="link cursor-pointer">
-        <div class="image-section">
-            <img [src]="link.imageUrl" alt="">
-        </div>
-        <div class="main-section">
-            <p class="title">{{link.title}}</p>
-            <p class="description">{{link.description}}</p>
-        </div>
-        @if (ownPage) {
-            <div class="tools-section">
-                <img class="cursor-pointer" (click)="openDialog()" class="icon" src="assets/svg/pencil.svg" alt="">
-                <img class="cursor-pointer" (click)="deleteLink()" class="icon" src="assets/svg/trash.svg" alt="">
-                <a [href]="link.linkUrl" target="_blank">
-                    <img src="assets/svg/share.svg" class="icon" alt="Go to the link page">
-                </a>
-            </div>
-        }
-    </div>
-</a>
+<div class="link cursor-pointer relative">
+    <a class="absolute w-full h-full" [href]="link.linkUrl"></a>
 
+    <div class="image-section">
+        <img [src]="link.imageUrl" alt="">
+    </div>
+    <div class="main-section">
+        <p class="title">{{link.title}}</p>
+        <p class="description">{{link.description}}</p>
+    </div>
+    @if (ownPage) {
+        <div class="tools-section">
+            <img class="cursor-pointer" (click)="openDialog()" class="icon" src="assets/svg/pencil.svg" alt="">
+            <img class="cursor-pointer" (click)="deleteLink()" class="icon" src="assets/svg/trash.svg" alt="">
+            <a [href]="link.linkUrl" target="_blank">
+                <img src="assets/svg/share.svg" class="icon" alt="Go to the link page">
+            </a>
+        </div>
+    }
+</div>
 
 
