@@ -408,17 +408,47 @@
 }
 
 .link-4, .link-5, .link-6 {
+    -webkit-animation: fake-links-move-right linear both;
+    -webkit-animation-timeline: scroll(root block);
+    -webkit-animation-range: 0 70vh;
+
+    -moz-animation: fake-links-move-right linear both;
+    -moz-animation-timeline: scroll(root block);
+    -moz-animation-range: 0 70vh;
+
+    -o-animation: fake-links-move-right linear both;
+    -o-animation-timeline: scroll(root block);
+    -o-animation-range: 0 70vh;
+
     animation: fake-links-move-right linear both;
     animation-timeline: scroll(root block);
     animation-range: 0 70vh;
 }
 
 .link-1, .link-2, .link-3 {
+    -webkit-animation: fake-links-move-left linear both;
+    -webkit-animation-timeline: scroll(root block);
+    -webkit-animation-range: 0 70vh;  
+
+    -moz-animation: fake-links-move-left linear both;
+    -moz-animation-timeline: scroll(root block);
+    -moz-animation-range: 0 70vh;  
+
+    -o-animation: fake-links-move-left linear both;
+    -o-animation-timeline: scroll(root block);
+    -o-animation-range: 0 70vh;  
+
     animation: fake-links-move-left linear both;
     animation-timeline: scroll(root block);
     animation-range: 0 70vh;  
 }
 
+/*{
+    -webkit-animation: mover 2s ease-in-out;  Chrome, Safari 
+    -moz-animation: mover 2s ease-in-out;    Firefox 
+    -o-animation: mover 2s ease-in-out;      Opera 
+    animation: mover 2s ease-in-out;         Estándar 
+}*/
 
 @-webkit-keyframes fake-links-move-right {
     to {
