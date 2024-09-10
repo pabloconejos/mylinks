@@ -22,9 +22,13 @@
                 <li>
                   <a (click)="logOut()" class="block px-4 py-2 hover:bg-gray-100">Log Out</a>
                 </li>
+              } @else {
+                <li>
+                  <a routerLink="/auth" class="block px-4 py-2 hover:bg-gray-100">Log In</a>
+                </li>
               }
               <li>
-                <a href="" class="block px-4 py-2 hover:bg-gray-100">Social Media</a>
+                <a href="https://github.com/pabloconejos/mylinks" class="block px-4 py-2 hover:bg-gray-100">Social Media</a>
               </li>
             </ul>
         </div>
