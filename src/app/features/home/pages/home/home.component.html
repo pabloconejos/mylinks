@@ -124,8 +124,10 @@
                     </article>
                 }
 
-                @if (isSearching) {
-                    <div class="account my-8 skeleton w-full"></div>
+                @if (users.length <= 0) {
+                    @for (card of [1,1,1,1]; track $index) {
+                        <app-profile-card-skeleton></app-profile-card-skeleton>
+                    }   
                 }
             </div>
         </div>
